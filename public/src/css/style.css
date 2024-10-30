@@ -1,0 +1,65 @@
+:root {
+  --color-green-darkest: #0b5733;
+  --color-green-dark: #348c41;
+  --color-green-medium: #70b95c;
+  --color-green-light: #b8d5a7;
+  --color-green-lightest: #e6efe2;
+}
+
+.bg-custom-green-darkest {
+  background-color: var(--color-green-darkest);
+}
+
+.bg-custom-green-darkest:hover {
+  background-color: #0b5733; /* El mismo color de fondo */
+}
+
+.bg-custom-green-dark {
+  background-color: var(--color-green-dark);
+}
+
+.bg-custom-green-medium {
+  background-color: var(--color-green-medium);
+}
+
+.bg-custom-green-light {
+  background-color: var(--color-green-light);
+}
+
+.bg-custom-green-lightest {
+  background-color: var(--color-green-lightest);
+}
+
+.text-custom-green-darkest {
+  color: var(--color-green-darkest);
+}
+
+.text-custom-green-dark {
+  color: var(--color-green-dark);
+}
+
+.border-custom-green {
+  border-color: var(--color-green-dark);
+}
+
+.custom-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.custom-grid-item {
+  background-color: white;
+  color: #333;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.my-hover-link:hover {
+  background-color: var(--color-green-light);
+}
+
+.my-hover-link {
+  padding: 12px 16px;
+}
