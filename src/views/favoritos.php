@@ -139,6 +139,53 @@
         </div>
     </div>
 
+    <footer class="bg-custom-green-darkest footer">
+        <div class="container">
+            <div class="row py-4">
+                <!-- Columna 1 -->
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <h5 class="text-custom-white mb-3">Sobre Nosotros</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-custom-white text-decoration-none">Quiénes somos</a></li>
+                        <li><a href="#" class="text-custom-white text-decoration-none">Nuestra misión</a></li>
+                        <li><a href="#" class="text-custom-white text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 2 -->
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <h5 class="text-custom-white mb-3">Eventos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-custom-white text-decoration-none">Próximos eventos</a></li>
+                        <li><a href="#" class="text-custom-white text-decoration-none">Calendario</a></li>
+                        <li><a href="#" class="text-custom-white text-decoration-none">Inscripciones</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3 -->
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <h5 class="text-custom-white mb-3">Recursos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-custom-white text-decoration-none">Blog</a></li>
+                        <li><a href="#" class="text-custom-white text-decoration-none">Documentación</a></li>
+                        <li><a href="#" class="text-custom-white text-decoration-none">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4 -->
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <h5 class="text-custom-white mb-3">Síguenos</h5>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-custom-white"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-custom-white"><i class="bi bi-twitter fs-5"></i></a>
+                        <a href="#" class="text-custom-white"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-custom-white"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
