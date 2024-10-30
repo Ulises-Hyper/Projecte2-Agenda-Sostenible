@@ -4,85 +4,67 @@
     --color-green-medium: #70b95c;
     --color-green-light: #b8d5a7;
     --color-green-lightest: #e6efe2;
-}
-
-.bg-custom-green-darkest {
+  }
+  
+  .bg-custom-green-darkest {
     background-color: var(--color-green-darkest);
-}
-
-.bg-custom-green-dark {
+  }
+  
+  .bg-custom-green-darkest:hover {
+    background-color: #0b5733; /* El mismo color de fondo */
+  }
+  
+  .bg-custom-green-dark {
     background-color: var(--color-green-dark);
-}
-
-.bg-custom-green-medium {
+  }
+  
+  .bg-custom-green-medium {
     background-color: var(--color-green-medium);
-}
-
-.bg-custom-green-light {
+  }
+  
+  .bg-custom-green-light {
     background-color: var(--color-green-light);
-}
-
-.bg-custom-green-lightest {
+  }
+  
+  .bg-custom-green-lightest {
     background-color: var(--color-green-lightest);
-}
-
-.text-custom-green-darkest {
+  }
+  
+  .text-custom-green-darkest {
     color: var(--color-green-darkest);
-}
-
-.text-custom-green-dark {
+  }
+  
+  .text-custom-green-dark {
     color: var(--color-green-dark);
-}
-
-.border-custom-green {
+  }
+  
+  .border-custom-green {
     border-color: var(--color-green-dark);
-}
-
-.custom-grid-container {
+  }
+  
+  .custom-grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* Dos columnas en una fila */
     gap: 1.5rem;
-    /* Espacio entre elementos */
-}
-
-.custom-grid-item {
+  }
+  
+  .custom-grid-item {
     background-color: white;
     color: #333;
     padding: 16px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.my-hover-link:hover {
+  }
+  
+  .my-hover-link:hover {
     background-color: var(--color-green-light);
-}
-
-.my-hover-link {
+  }
+  
+  .my-hover-link {
     padding: 12px 16px;
-}
+  }
 
-.bg-custom-green-light {
-    background-color: #b8d5a7;
-}
-
-.bg-custom-green-medium {
-    background-color: #70b95c;
-}
-
-.bg-custom-green {
-    background-color: #1B4332;
-}
-
-.bg-custom-white {
-    background-color: white !important;
-}
-
-.text-custom-green {
-    color: #1B4332;
-}
-
-.text-custom-white {
+  .text-custom-white {
     color: white;
 }
 
@@ -139,4 +121,8 @@
     bottom: 0;
     width: 100%;
     padding: 1rem 0;
+}
+
+.bg-custom-white {
+    background-color: white !important;
 }

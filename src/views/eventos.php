@@ -224,10 +224,10 @@
 
     <!-- Floating Filter Button -->
     <button class="btn btn-custom-green-light rounded-circle filter-button shadow">
-        <i class="bi bi-funnel fs-5"></i>
+        <i class="bi bi-funnel fs-5 text-white"></i>
     </button>
 
-    <footer class="bg-custom-green footer">
+    <footer class="bg-custom-green-darkest footer">
         <div class="container">
             <div class="row py-4">
                 <!-- Columna 1 -->
