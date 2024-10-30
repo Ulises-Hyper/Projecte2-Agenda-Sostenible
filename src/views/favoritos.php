@@ -161,7 +161,7 @@
                         <li><a href="#" class="text-custom-white text-decoration-none">Inscripciones</a></li>
                     </ul>
                 </div>
-
+ 
                 <!-- Columna 3 -->
                 <div class="col-md-3 col-sm-6 mb-3">
                     <h5 class="text-custom-white mb-3">Recursos</h5>
