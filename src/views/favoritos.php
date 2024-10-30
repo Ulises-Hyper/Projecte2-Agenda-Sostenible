@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,22 +30,21 @@
         }
     </style>!-->
 </head>
+
 <body class="bg-custom-green-light">
     <div class="bg-custom-green-darkest py-2">
         <div class="container d-flex align-items-center justify-content-between">
-            <a href="index.html">
+            <a href="index.php">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="64" width="64">
                     <!-- Capa principal de hoja -->
-                    <path 
-                        d="M16 8C16 8 12 12 10 16C10 20 13 23 16 24C19 23 22 20 22 16C20 12 16 8 16 8Z" 
-                        fill="#348C41"
-                    />
-                    
+                    <path
+                        d="M16 8C16 8 12 12 10 16C10 20 13 23 16 24C19 23 22 20 22 16C20 12 16 8 16 8Z"
+                        fill="#348C41" />
+
                     <!-- Detalle central -->
-                    <path 
-                        d="M12 16C12 16 14 18 16 18C18 18 20 16 20 16C20 19 18 21 16 21C14 21 12 19 12 16Z" 
-                        fill="#B8D5A7"
-                    />
+                    <path
+                        d="M12 16C12 16 14 18 16 18C18 18 20 16 20 16C20 19 18 21 16 21C14 21 12 19 12 16Z"
+                        fill="#B8D5A7" />
                 </svg>
             </a>
             <div class="input-group w-50">
@@ -76,16 +76,16 @@
             <div class="collapse navbar-collapse justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item my-hover-link">
-                        <a class="nav-link text-white" href="#"><i class="fas fa-home"></i> Inicio</a>
+                        <a class="nav-link text-white" href="index.php"><i class="fas fa-home"></i> Inicio</a>
                     </li>
                     <li class="nav-item my-hover-link">
-                        <a class="nav-link text-white" href="#"><i class="fas fa-calendar-alt"></i> Eventos</a>
+                        <a class="nav-link text-white" href="eventos.php"><i class="fas fa-calendar-alt"></i> Eventos</a>
                     </li>
                     <li class="nav-item my-hover-link">
                         <a class="nav-link text-white" href="#"><i class="fas fa-leaf"></i> Consejos</a>
                     </li>
                     <li class="nav-item my-hover-link">
-                        <a class="nav-link text-white" href="#"><i class="fas fa-bullhorn"></i> Clasificados</a>
+                        <a class="nav-link text-white" href="favoritos.php"><i class="fas fa-bullhorn"></i> Favoritos</a>
                     </li>
                     <li class="nav-item my-hover-link">
                         <a class="nav-link text-white" href="#"><i class="fas fa-users"></i> Comunidad</a>
@@ -98,13 +98,13 @@
     <!-- Main Content -->
     <div class="container py-4">
         <h1 class="fs-3 fw-bold mb-4 text-custom-green">Eventos Favoritos</h1>
-        
+
         <!-- Favorite Events Grid -->
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             <!-- Example Event Card -->
             <div class="col">
                 <div class="card shadow-sm">
-                    <img src="https://via.placeholder.com/800x400" class="card-img-top" alt="Imagen del Evento">
+                    <img src="https://picsum.photos/800/400" class="card-img-top" alt="Imagen del Evento">
                     <div class="card-body">
                         <h5 class="card-title text-custom-green">Prova</h5>
                         <p class="card-text text-muted small">Prova</p>
@@ -117,11 +117,11 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Repite las tarjetas de eventos favoritos según sea necesario -->
             <div class="col">
                 <div class="card shadow-sm">
-                    <img src="https://via.placeholder.com/800x400" class="card-img-top" alt="Imagen del Evento">
+                    <img src="https://picsum.photos/800/400" class="card-img-top" alt="Imagen del Evento">
                     <div class="card-body">
                         <h5 class="card-title text-custom-green">Charla sobre Energías Renovables</h5>
                         <p class="card-text text-muted small">Descubre las innovaciones en energía solar.</p>
@@ -161,7 +161,7 @@
                         <li><a href="#" class="text-custom-white text-decoration-none">Inscripciones</a></li>
                     </ul>
                 </div>
- 
+
                 <!-- Columna 3 -->
                 <div class="col-md-3 col-sm-6 mb-3">
                     <h5 class="text-custom-white mb-3">Recursos</h5>
@@ -188,4 +188,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

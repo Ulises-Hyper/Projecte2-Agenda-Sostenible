@@ -56,16 +56,16 @@
                 <div class="collapse navbar-collapse justify-content-center">
                     <ul class="navbar-nav">
                         <li class="nav-item my-hover-link">
-                            <a class="nav-link text-white" href="#"><i class="fas fa-home"></i> Inicio</a>
+                            <a class="nav-link text-white" href="index.php"><i class="fas fa-home"></i> Inicio</a>
                         </li>
                         <li class="nav-item my-hover-link">
-                            <a class="nav-link text-white" href="#"><i class="fas fa-calendar-alt"></i> Eventos</a>
+                            <a class="nav-link text-white" href="eventos.php"><i class="fas fa-calendar-alt"></i> Eventos</a>
                         </li>
                         <li class="nav-item my-hover-link">
                             <a class="nav-link text-white" href="#"><i class="fas fa-leaf"></i> Consejos</a>
                         </li>
                         <li class="nav-item my-hover-link">
-                            <a class="nav-link text-white" href="#"><i class="fas fa-bullhorn"></i> Clasificados</a>
+                            <a class="nav-link text-white" href="favoritos.php"><i class="fas fa-bullhorn"></i> Favoritos</a>
                         </li>
                         <li class="nav-item my-hover-link">
                             <a class="nav-link text-white" href="#"><i class="fas fa-users"></i> Comunidad</a>
