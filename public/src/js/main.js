@@ -71,4 +71,4 @@ document.addEventListener('DOMContentLoaded', function() {
             confirmPassword.setCustomValidity('Las contraseñas no coinciden.');
         }
     });
-});
+}); 
