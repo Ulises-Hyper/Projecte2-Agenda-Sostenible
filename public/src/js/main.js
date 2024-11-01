@@ -39,3 +39,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Validación del formulario con Bootstrap
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('registrationForm');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+
+    form.addEventListener('submit', function(event) {
+        // Validación de contraseña y confirmación
+        if (password.value !== confirmPassword.value) {
+            confirmPassword.setCustomValidity('Las contraseñas no coinciden.');
+        } else {
+            confirmPassword.setCustomValidity('');
+        }
+
+        // Evitar el envío si el formulario es inválido
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        form.classList.add('was-validated');
+    });
+
+    // Limpiar el mensaje de error cuando las contraseñas coincidan
+    confirmPassword.addEventListener('input', function() {
+        if (password.value === confirmPassword.value) {
+            confirmPassword.setCustomValidity('');
+        } else {
+            confirmPassword.setCustomValidity('Las contraseñas no coinciden.');
+        }
+    });
+});
