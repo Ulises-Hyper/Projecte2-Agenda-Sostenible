@@ -185,3 +185,9 @@
 .rating-stars .selected {
   color: #ffc107; /* Asegúrate de que las estrellas seleccionadas permanezcan amarillas */
 }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
