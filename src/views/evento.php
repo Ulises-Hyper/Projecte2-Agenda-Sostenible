@@ -72,7 +72,7 @@
                     <li class="nav-item my-hover-link">
                         <a class="nav-link text-white" href="#"><i class="fas fa-users"></i> Comunidad</a>
                     </li>
-                </ul>
+                </ul> 
             </div>
         </div>
     </nav>
