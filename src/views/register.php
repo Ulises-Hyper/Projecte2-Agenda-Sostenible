@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../public/src/css/style.css">
+    <script src="../../public/src/js/main.js"></script>
 </head>
 
 <body class="bg-custom-green-lightest ">
@@ -25,7 +26,7 @@
                 <div class="card shadow">
                     <div class="card-body p-3">
                         <h1 class="text-center text-custom-green mb-4">Registrarse</h1>
-                        <form id="registrationForm" novalidate>
+                        <form id="registrationForm">
                             <div class="form-floating mb-2">
                                 <input type="text" class="form-control" id="name" placeholder="Nombre" required>
                                 <label for="name">Nombre</label>
@@ -52,9 +53,9 @@
                                 <div class="invalid-feedback">La contraseña debe tener entre 8 y 20 caracteres.</div>
                             </div>
                             <div class="form-floating mb-2">
-                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmar Contraseña" required>
-                                <label for="confirmPassword">Confirmar Contraseña</label>
-                                <div class="invalid-feedback">Las contraseñas deben coincidir.</div>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="RepetirContraseña" required minlength="8" maxlength="20">
+                                <label for="password">Repetir Contraseña</label>
+                                <div class="invalid-feedback">Las contraseñas no coinciden</div>
                             </div>
                             <button type="submit" class="btn btn-custom-green w-100">Registrarse</button>
                         </form>
@@ -63,7 +64,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
