@@ -1,128 +1,187 @@
 :root {
-    --color-green-darkest: #0b5733;
-    --color-green-dark: #348c41;
-    --color-green-medium: #70b95c;
-    --color-green-light: #b8d5a7;
-    --color-green-lightest: #e6efe2;
-  }
-  
-  .bg-custom-green-darkest {
-    background-color: var(--color-green-darkest);
-  }
-  
-  .bg-custom-green-darkest:hover {
-    background-color: #0b5733; /* El mismo color de fondo */
-  }
-  
-  .bg-custom-green-dark {
-    background-color: var(--color-green-dark);
-  }
-  
-  .bg-custom-green-medium {
-    background-color: var(--color-green-medium);
-  }
-  
-  .bg-custom-green-light {
-    background-color: var(--color-green-light);
-  }
-  
-  .bg-custom-green-lightest {
-    background-color: var(--color-green-lightest);
-  }
-  
-  .text-custom-green-darkest {
-    color: var(--color-green-darkest);
-  }
-  
-  .text-custom-green-dark {
-    color: var(--color-green-dark);
-  }
-  
-  .border-custom-green {
-    border-color: var(--color-green-dark);
-  }
-  
-  .custom-grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-  
-  .custom-grid-item {
-    background-color: white;
-    color: #333;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .my-hover-link:hover {
-    background-color: var(--color-green-light);
-  }
-  
-  .my-hover-link {
-    padding: 12px 16px;
-  }
+  --color-green-darkest: #0b5733;
+  --color-green-dark: #348c41;
+  --color-green-medium: #70b95c;
+  --color-green-light: #b8d5a7;
+  --color-green-lightest: #e6efe2;
+}
 
-  .text-custom-white {
-    color: white;
+.bg-custom-green-darkest {
+  background-color: var(--color-green-darkest);
+}
+
+.bg-custom-green-darkest:hover {
+  background-color: #0b5733; /* El mismo color de fondo */
+}
+
+.bg-custom-green-dark {
+  background-color: var(--color-green-dark);
+}
+
+.bg-custom-green-medium {
+  background-color: var(--color-green-medium);
+}
+
+.bg-custom-green-light {
+  background-color: var(--color-green-light);
+}
+
+.bg-custom-green-lightest {
+  background-color: var(--color-green-lightest);
+}
+
+.text-custom-green-darkest {
+  color: var(--color-green-darkest);
+}
+
+.text-custom-green-dark {
+  color: var(--color-green-dark);
+}
+
+.border-custom-green {
+  border-color: var(--color-green-dark);
+}
+
+.custom-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.custom-grid-item {
+  background-color: white;
+  color: #333;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.my-hover-link:hover {
+  background-color: var(--color-green-light);
+}
+
+.my-hover-link {
+  padding: 12px 16px;
+}
+
+.text-custom-white {
+  color: white;
 }
 
 .btn-custom-green {
-    background-color: #1B4332;
-    color: white;
+  background-color: #1b4332;
+  color: white;
 }
 
 .btn-custom-green-light {
-    background-color: #70b95d;
+  background-color: #70b95d;
 }
 
 .btn-custom-green:hover:not(.bg-custom-white) {
-    background-color: #143728;
-    color: white;
+  background-color: #143728;
+  color: white;
 }
 
 .date-box {
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
 }
 
 .category-icon {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #1B4332;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #1b4332;
 }
 
 .filter-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
 }
 
 .nav-pills .nav-link.active {
-    background-color: #1B4332;
-    color: white;
+  background-color: #1b4332;
+  color: white;
 }
 
 .nav-pills .nav-link {
-    color: #1B4332;
-    background-color: #e8f3e4;
-    /* Verde muy claro */
-    transition: background-color 0.3s ease;
+  color: #1b4332;
+  background-color: #e8f3e4;
+  /* Verde muy claro */
+  transition: background-color 0.3s ease;
 }
 
 .nav-pills .nav-link:hover {
-    background-color: #1B4332;
-    color: white;
+  background-color: #1b4332;
+  color: white;
 }
 
 .footer {
-    bottom: 0;
-    width: 100%;
-    padding: 1rem 0;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 0;
 }
 
 .bg-custom-white {
-    background-color: white !important;
+  background-color: white !important;
+}
+
+/* Estilos para el contenedor de la fecha */
+.carousel-date {
+  position: absolute;
+  bottom: 60px;
+  left: 165px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  padding: 10px;
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.custom-margin {
+  margin: 63px;
+  width: 63px;
+}
+
+.btn-tag {
+  background-color: #bcd4ae7d;
+  width: 100px;
+  border-radius: 50px;
+  box-shadow: 1px 1px 2px 2px rgba(138, 138, 138, 0.5);
+}
+
+.rating-stars {
+  display: flex;
+  cursor: pointer;
+}
+
+.rating-stars i {
+  transition: color 0.2s;
+}
+
+.rating-stars .fas {
+  color: #ffc107; /* Color amarillo para las estrellas llenas */
+}
+
+.rating-stars .far {
+  color: #e4e5e9; /* Color gris claro para las estrellas vacías */
+}
+
+/* Estilo al pasar el cursor por las estrellas */
+.rating-stars i:hover,
+.rating-stars i:hover ~ i {
+  color: #ffc107; /* Amarillo brillante al pasar el cursor */
+}
+
+/* Cuando una estrella es seleccionada, mantener su color */
+.rating-stars .selected {
+  color: #ffc107; /* Asegúrate de que las estrellas seleccionadas permanezcan amarillas */
 }
