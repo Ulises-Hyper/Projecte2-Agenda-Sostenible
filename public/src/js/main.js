@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Validación del formulario con Bootstrap
 document.addEventListener('DOMContentLoaded', function() {
+    // Asegúrate de que la variable `form` esté definida dentro de este bloque
     const form = document.getElementById('registrationForm');
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('confirmPassword');
