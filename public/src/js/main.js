@@ -99,3 +99,4 @@ document.addEventListener("DOMContentLoaded", () => {
     const profileImageInput = document.getElementById("profileImageInput");
     profileImageInput.addEventListener("change", previewImage);
 });
+ 
