@@ -186,8 +186,37 @@
   color: #ffc107; /* Asegúrate de que las estrellas seleccionadas permanezcan amarillas */
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-} 
+}
+
+.profile-picture {
+  position: relative; /* Permite que los hijos con position: absolute se posicionen dentro de este contenedor */
+  width: 100px; /* Ancho de la imagen */
+  height: 100px; /* Alto de la imagen */
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f0f0f0; /* Color de fondo cuando no hay imagen */
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%; /* Cambiado para mantener la altura y el ancho igual al contenedor */
+  object-fit: cover; /* Ajusta la imagen para cubrir el contenedor */
+}
+
+.edit-icon {
+  position: absolute;
+  left: 54%;
+  top: 25%;
+  background: rgb(111, 255, 0);
+  border-radius: 50%;
+  padding: 5px;
+}
+
+input[type="file"] {
+  display: none; /* Oculta el botón de archivo */
+}
