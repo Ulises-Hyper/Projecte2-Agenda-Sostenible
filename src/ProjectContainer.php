@@ -1,6 +1,7 @@
 <?php
 
-class ProjectContainer extends \Emeset\Container {
+class ProjectContainer extends \Emeset\Container
+{
 
     public function __construct($config){
         $this->sql = new Db($config);

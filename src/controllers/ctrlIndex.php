@@ -1,7 +1,6 @@
 <?php
 
 function ctrlIndex($request, $response, $container){
-
     $name = $request->get(INPUT_GET, "name");
 
     $response->set("name", $name);
@@ -9,5 +8,4 @@ function ctrlIndex($request, $response, $container){
     $response->setTemplate("index.php");
 
     return $response;
-    
 }

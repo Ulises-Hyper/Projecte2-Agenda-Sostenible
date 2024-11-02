@@ -1,13 +1,14 @@
 <?php
 
-class Db {
+class Db
+{
 
     private PDO $sql;
 
     public function __construct($config)
     {
         $dsn = "mysql:dbname={$config['db']['name']};host={$config['db']['host']}";
-        
+
         $user = $config["db"]["user"];
         $password = $config["db"]["pass"];
         try {
@@ -17,8 +18,8 @@ class Db {
         }
     }
 
-    public function get(): PDO {
+    public function get(): PDO
+    {
         return $this->sql;
     }
-
 }

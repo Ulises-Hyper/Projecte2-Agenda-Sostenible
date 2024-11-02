@@ -57,7 +57,7 @@ class Response
      */
     public function setSession($id, $value)
     {
-           $_SESSION[$id] = $value;
+        $_SESSION[$id] = $value;
     }
 
     /**
@@ -70,7 +70,7 @@ class Response
     {
         unset($_SESSION[$id]);
     }
-    
+
     /**
      * setCookie funció afegida per consistència crea una cookie.
      *

@@ -41,5 +41,4 @@ class Container
     {
         return new \Emeset\Request();
     }
-
 }
