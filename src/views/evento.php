@@ -93,13 +93,13 @@
         <!-- Image Container -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../../public/img/paisaje-1.jpg" class="d-block w-100" alt="..." style="object-fit: cover; height: 550px;">
+                <img src="/img/paisaje-1.jpg" class="d-block w-100" alt="..." style="object-fit: cover; height: 550px;">
             </div>
             <div class="carousel-item">
-                <img src="../../public/img/paisaje-2.jpg" class="d-block w-100" alt="..." style="object-fit: cover; height: 550px;">
+                <img src="/img/paisaje-2.jpg" class="d-block w-100" alt="..." style="object-fit: cover; height: 550px;">
             </div>
             <div class="carousel-item">
-                <img src="../../public/img/paisaje-3.jpg" class="d-block w-100" alt="..." style="object-fit: cover; height: 550px;">
+                <img src="/img/paisaje-3.jpg" class="d-block w-100" alt="..." style="object-fit: cover; height: 550px;">
             </div>
         </div>
 
