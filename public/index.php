@@ -9,6 +9,7 @@ include "../src/controllers/ctrlIndex.php";
 include "../src/controllers/ctrlJson.php";
 include '../src/controllers/ctrlDashboard.php';
 include '../src/controllers/ctrlEvento.php';
+include '../src/controllers/ctrlEventos.php';
 
 /**
  * Carreguem les classes del Framework Emeset
@@ -41,6 +42,8 @@ if(!isset($r)){
   $response = ctrlDashboard($request, $response, $container);
 } elseif($r == "evento"){
   $response = ctrlEvento($request, $response, $container);
+} elseif($r == "eventos"){
+  $response = ctrlEventos($request, $response, $container);
 } elseif($r == "json"){
   $response = ctrlJson($request, $response, $container);
 } else {
