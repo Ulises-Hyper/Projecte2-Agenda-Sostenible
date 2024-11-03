@@ -46,3 +46,4 @@ if ($r == "") {
 
 /* Enviem la resposta al client. */
 $response->response();
+ 
