@@ -7,51 +7,52 @@ document.addEventListener("DOMContentLoaded", () => {
     const newPassword = document.getElementById("newPassword");
     const confirmNewPassword = document.getElementById("confirmNewPassword");
 
-    profileEditForm.addEventListener("submit", function (event) {
-        // Validación de las contraseñas
-        if (password.value !== confirmPassword.value) {
-            confirmPassword.setCustomValidity("Las contraseñas no coinciden.");
-        } else {
-            confirmPassword.setCustomValidity("");
-        }
+    if (profileEditForm && password && confirmPassword && newPassword && confirmNewPassword) {
+        profileEditForm.addEventListener("submit", function (event) {
+            // Validación de las contraseñas
+            if (password.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity("Las contraseñas no coinciden.");
+            } else {
+                confirmPassword.setCustomValidity("");
+            }
 
-        if (newPassword.value !== confirmNewPassword.value) {
-            confirmNewPassword.setCustomValidity("Las nuevas contraseñas no coinciden.");
-        } else {
-            confirmNewPassword.setCustomValidity("");
-        }
+            if (newPassword.value !== confirmNewPassword.value) {
+                confirmNewPassword.setCustomValidity("Las nuevas contraseñas no coinciden.");
+            } else {
+                confirmNewPassword.setCustomValidity("");
+            }
 
-        // Evitar el envío si el formulario es inválido
-        if (!profileEditForm.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
+            // Evitar el envío si el formulario es inválido
+            if (!profileEditForm.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
 
-        profileEditForm.classList.add("was-validated");
-    });
+            profileEditForm.classList.add("was-validated");
+        });
 
-    // Limpiar el mensaje de error cuando las contraseñas coincidan
-    confirmPassword.addEventListener("input", function () {
-        if (password.value === confirmPassword.value) {
-            confirmPassword.setCustomValidity("");
-        } else {
-            confirmPassword.setCustomValidity("Las contraseñas no coinciden.");
-        }
-    });
+        // Limpiar el mensaje de error cuando las contraseñas coincidan
+        confirmPassword.addEventListener("input", function () {
+            if (password.value === confirmPassword.value) {
+                confirmPassword.setCustomValidity("");
+            } else {
+                confirmPassword.setCustomValidity("Las contraseñas no coinciden.");
+            }
+        });
 
-    confirmNewPassword.addEventListener("input", function () {
-        if (newPassword.value === confirmNewPassword.value) {
-            confirmNewPassword.setCustomValidity("");
-        } else {
-            confirmNewPassword.setCustomValidity("Las nuevas contraseñas no coinciden.");
-        }
-    });
+        confirmNewPassword.addEventListener("input", function () {
+            if (newPassword.value === confirmNewPassword.value) {
+                confirmNewPassword.setCustomValidity("");
+            } else {
+                confirmNewPassword.setCustomValidity("Las nuevas contraseñas no coinciden.");
+            }
+        });
+    }
 
     // Manejo de la calificación con estrellas
     const stars = document.querySelectorAll(".rating-stars i");
     let currentRating = 0;
 
-    // Función para resaltar las estrellas hasta un índice determinado
     function highlightStars(index) {
         stars.forEach((star, i) => {
             if (i <= index) {
@@ -64,21 +65,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Agrega los eventos a cada estrella
-    stars.forEach((star, index) => {
-        // Evento de pasar el cursor por encima de una estrella
-        star.addEventListener("mouseover", () => highlightStars(index));
+    if (stars.length > 0) {
+        stars.forEach((star, index) => {
+            // Evento de pasar el cursor por encima de una estrella
+            star.addEventListener("mouseover", () => highlightStars(index));
 
-        // Evento de quitar el cursor de las estrellas, resalta solo las seleccionadas
-        star.addEventListener("mouseout", () => highlightStars(currentRating - 1));
+            // Evento de quitar el cursor de las estrellas, resalta solo las seleccionadas
+            star.addEventListener("mouseout", () => highlightStars(currentRating - 1));
 
-        // Evento de hacer clic en una estrella para fijar la calificación
-        star.addEventListener("click", () => {
-            currentRating = index + 1;
-            document.querySelector("#ratingValue").value = currentRating;
-            highlightStars(index);
+            // Evento de hacer clic en una estrella para fijar la calificación
+            star.addEventListener("click", () => {
+                currentRating = index + 1;
+                const ratingValue = document.querySelector("#ratingValue");
+                if (ratingValue) {
+                    ratingValue.value = currentRating;
+                }
+                highlightStars(index);
+            });
         });
-    });
+    }
 
     // Función para previsualizar la imagen de perfil
     function previewImage(event) {
@@ -87,7 +92,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         reader.onload = function (e) {
             const img = document.getElementById("profilePicture");
-            img.src = e.target.result;
+            if (img) {
+                img.src = e.target.result;
+            }
         };
 
         if (file) {
@@ -97,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Asignar la función de previsualización de imagen al input de archivo
     const profileImageInput = document.getElementById("profileImageInput");
-    profileImageInput.addEventListener("change", previewImage);
+    if (profileImageInput) {
+        profileImageInput.addEventListener("change", previewImage);
+    }
 });
- 
