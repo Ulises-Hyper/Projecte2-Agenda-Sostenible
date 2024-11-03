@@ -52,6 +52,5 @@ if(!isset($r)){
 } else {
   echo "No existe la ruta";
 }
-
 /* Enviem la resposta al client. */
 $response->response();
