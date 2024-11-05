@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <body>
     <!DOCTYPE html>
     <html lang="es">
+
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +15,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
         <link rel="stylesheet" href="/src/css/style.css">
     </head>
+
     <body class="bg-custom-green-lightest">
         <!-- Barra superior con buscador -->
         <div class="bg-custom-green-darkest py-2">
@@ -43,32 +46,38 @@
                         </svg>
                     </button>
                     <button class="d-flex btn align-items-center text-white">
-                        <i class="fas fa-user-circle fs-2"></i>
-                        <span class="ms-2 d-none d-md-inline">Mi Cuenta</span>
+                        <div class="col-md-3 text-end">
+                            <button type="button" class="hover-white me-2">
+                                <a href="/?r=login">Iniciar Sesión</a>
+                            </button>
+                            <button type="button" class="hover-white">
+                                <a href="/?r=register">Registrarse</a>
+                            </button>
+                        </div>
                     </button>
                 </div>
             </div>
         </div>
- 
+
         <!-- Navegación Principal -->
         <nav class="navbar-expand-md navbar-dark bg-custom-green-medium">
             <div class="container">
                 <div class="collapse navbar-collapse justify-content-center">
                     <ul class="navbar-nav">
                         <li class="nav-item my-hover-link">
-                            <a class="nav-link text-white" href="index.php?r=index"><i class="fas fa-home"></i> Inicio</a>
+                            <a class="nav-link text-white" href="index.php"><i class="fas fa-home"></i> Inicio</a>
                         </li>
                         <li class="nav-item my-hover-link">
-                            <a class="nav-link text-white" href="eventos.php"><i class="fas fa-calendar-alt"></i> Eventos</a>
+                            <a class="nav-link text-white" href="/?r=eventos"><i class="fas fa-calendar-alt"></i> Eventos</a>
                         </li>
                         <li class="nav-item my-hover-link">
-                            <a class="nav-link text-white" href="?r=dashboard"><i class="fas fa-leaf"></i> Dashboard</a>
+                            <a class="nav-link text-white" href="/?r=consejos"><i class="fas fa-lightbulb"></i> Consejos</a>
                         </li>
                         <li class="nav-item my-hover-link">
-                            <a class="nav-link text-white" href="favoritos.php"><i class="fas fa-bullhorn"></i> Favoritos</a>
+                            <a class="nav-link text-white" href="/?r=favoritos"><i class="fas fa-heart"></i> Favoritos</a>
                         </li>
                         <li class="nav-item my-hover-link">
-                            <a class="nav-link text-white" href="#"><i class="fas fa-users"></i> Comunidad</a>
+                            <a class="nav-link text-white" href="/?r=anunci"><i class="fas fa-newspaper"></i> Anunci Clasificat</a>
                         </li>
                     </ul>
                 </div>
@@ -82,8 +91,12 @@
                     <h1 class="text-custom-green-darkest fw-bold">Descubre un Figueres más Sostenible</h1>
                     <p>Únete a nuestra comunidad y participa en iniciativas que transforman nuestra ciudad.</p>
                     <div>
-                        <button class="btn btn-lg p-6 bg-custom-green-darkest text-white me-2">Participar</button>
-                        <button class="btn btn-lg p-6 border border-light">Saber más</button>
+                        <button class="btn btn-lg p-6 bg-custom-green-darkest text-white me-2">
+                            <a href="/?r=eventos">Participar</a>
+                        </button>
+                        <button class="btn btn-lg p-6 border border-light">
+                            <a href="/?r=consejos">Saber más</a>
+                        </button>
                     </div>
                 </div>
                 <div class="container mt-5">
@@ -156,7 +169,7 @@
                                 <h5 class="card-title text-custom-green-darkest">Limpieza Comunitaria</h5>
                                 <p class="card-text">Jornada de limpieza en el Parque Municipal</p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i>  Parque Central</p>
+                                    <p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> Parque Central</p>
                                     <button class="btn text-custom-green-dark d-flex align-items-center">
                                         <svg class="svg-inline--fa fa-calendar-plus me-2" aria-hidden="true" focusable="false" data-prefix="far" data-icon="calendar-plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
                                             <path fill="currentColor" d="M224 232C237.3 232 248 242.7 248 256V304H296C309.3 304 320 314.7 320 328C320 341.3 309.3 352 296 352H248V400C248 413.3 237.3 424 224 424C210.7 424 200 413.3 200 400V352H152C138.7 352 128 341.3 128 328C128 314.7 138.7 304 152 304H200V256C200 242.7 210.7 232 224 232zM152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z"></path>
@@ -196,7 +209,9 @@
             <div class="container text-center pb-4 pt-4">
                 <h2>¿Quieres ser parte del cambio?</h2>
                 <p>Únete a nuestra comunidad y ayuda a construir un Figueres más sostenible. Cada pequeña acción cuenta.</p>
-                <button class="btn bg-custom-green-darkest text-light px-4 py-2">Únete Ahora</button>
+                <button class="btn bg-custom-green-darkest text-light px-4 py-2">
+                    <a href="/?r=register">Únete ahora</a>
+                </button>
             </div>
         </section>
         <!-- Footer -->

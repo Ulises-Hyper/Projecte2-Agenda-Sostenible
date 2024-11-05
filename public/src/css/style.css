@@ -220,3 +220,33 @@ html {
 input[type="file"] {
   display: none; /* Oculta el botón de archivo */
 }
+
+.hover-white {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  color: white;
+  border: 2px solid green;
+  border-radius: 8px;
+}
+
+.hover-white a{
+  list-style: none;
+  text-decoration: none;
+  color: white;
+}
+
+.hover-white:hover {
+  background-color: #348c41;
+  color: white; /* Cambia el color del texto si es necesario */
+  transition: background-color 0.3s; /* Añade una transición suave */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

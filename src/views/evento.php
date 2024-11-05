@@ -45,14 +45,20 @@
                     </svg>
                 </button>
                 <button class="d-flex btn align-items-center text-white">
-                    <i class="fas fa-user-circle fs-2"></i>
-                    <span class="ms-2 d-none d-md-inline">Mi Cuenta</span>
+                    <div class="col-md-3 text-end">
+                        <button type="button" class="hover-white me-2">
+                            <a href="/?r=login">Iniciar Sesión</a>
+                        </button>
+                        <button type="button" class="hover-white">
+                            <a href="/?r=register">Registrarse</a>
+                        </button>
+                    </div>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Main Navigation -->
+    <!-- Navegación Principal -->
     <nav class="navbar-expand-md navbar-dark bg-custom-green-medium">
         <div class="container">
             <div class="collapse navbar-collapse justify-content-center">
@@ -61,18 +67,18 @@
                         <a class="nav-link text-white" href="index.php"><i class="fas fa-home"></i> Inicio</a>
                     </li>
                     <li class="nav-item my-hover-link">
-                        <a class="nav-link text-white" href="eventos.php"><i class="fas fa-calendar-alt"></i> Eventos</a>
+                        <a class="nav-link text-white" href="/?r=eventos"><i class="fas fa-calendar-alt"></i> Eventos</a>
                     </li>
                     <li class="nav-item my-hover-link">
-                        <a class="nav-link text-white" href="#"><i class="fas fa-leaf"></i> Consejos</a>
+                        <a class="nav-link text-white" href="/?r=consejos"><i class="fas fa-lightbulb"></i> Consejos</a>
                     </li>
                     <li class="nav-item my-hover-link">
-                        <a class="nav-link text-white" href="favoritos.php"><i class="fas fa-bullhorn"></i> Favoritos</a>
+                        <a class="nav-link text-white" href="/?r=favoritos"><i class="fas fa-heart"></i> Favoritos</a>
                     </li>
                     <li class="nav-item my-hover-link">
-                        <a class="nav-link text-white" href="#"><i class="fas fa-users"></i> Comunidad</a>
+                        <a class="nav-link text-white" href="/?r=anunci"><i class="fas fa-newspaper"></i> Anunci Clasificat</a>
                     </li>
-                </ul> 
+                </ul>
             </div>
         </div>
     </nav>

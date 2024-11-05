@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/src/css/style.css">
 </head>
+
 <body class="bg-custom-green-lightest">
     <!-- Barra superior con buscador -->
     <div class="bg-custom-green-darkest py-2">
@@ -39,8 +41,14 @@
                     </svg>
                 </button>
                 <button class="d-flex btn align-items-center text-white">
-                    <i class="fas fa-user-circle fs-2"></i>
-                    <span class="ms-2 d-none d-md-inline">Mi Cuenta</span>
+                    <div class="col-md-3 text-end">
+                        <button type="button" class="hover-white me-2">
+                            <a href="/?r=login">Iniciar Sesión</a>
+                        </button>
+                        <button type="button" class="hover-white">
+                            <a href="/?r=register">Registrarse</a>
+                        </button>
+                    </div>
                 </button>
             </div>
         </div>
@@ -55,22 +63,22 @@
                         <a class="nav-link text-white" href="index.php"><i class="fas fa-home"></i> Inicio</a>
                     </li>
                     <li class="nav-item my-hover-link">
-                        <a class="nav-link text-white" href="eventos.php"><i class="fas fa-calendar-alt"></i> Eventos</a>
+                        <a class="nav-link text-white" href="/?r=eventos"><i class="fas fa-calendar-alt"></i> Eventos</a>
                     </li>
                     <li class="nav-item my-hover-link">
-                        <a class="nav-link text-white" href="#"><i class="fas fa-leaf"></i> Consejos</a>
+                        <a class="nav-link text-white" href="/?r=consejos"><i class="fas fa-lightbulb"></i> Consejos</a>
                     </li>
                     <li class="nav-item my-hover-link">
-                        <a class="nav-link text-white" href="favoritos.php"><i class="fas fa-bullhorn"></i> Favoritos</a>
+                        <a class="nav-link text-white" href="/?r=favoritos"><i class="fas fa-heart"></i> Favoritos</a>
                     </li>
                     <li class="nav-item my-hover-link">
-                        <a class="nav-link text-white" href="#"><i class="fas fa-users"></i> Comunidad</a>
+                        <a class="nav-link text-white" href="/?r=anunci"><i class="fas fa-newspaper"></i> Anunci Clasificat</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    
+
     <!-- Contenido principal -->
     <div class="container mt-4">
         <div class="card">
@@ -164,4 +172,5 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
