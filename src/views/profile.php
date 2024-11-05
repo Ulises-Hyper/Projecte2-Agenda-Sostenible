@@ -17,11 +17,11 @@
 
 <body class="bg-custom-green-lightest ">
     <!-- Edit Profile Form -->
-    <div class="mt-4">
+    <div class="">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-5">
-                <div class="text-start mb-2">
-                    <button class="btn btn-link text-success mb-4">
+                <div class="text-start">
+                    <button class="btn btn-link text-success mb-2">
                         <i class="bi bi-arrow-left back-arrow" onclick="history.back()"></i>
                         Volver atrás
                     </button>
