@@ -37,19 +37,19 @@ if (isset($_REQUEST["r"])) {
 }
 
 /* Front Controller, aquí es decideix quina acció s'executa */
-if(!isset($r)){
+if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
-}elseif($r == "dashboard"){
+} elseif ($r == "dashboard") {
   $response = ctrlDashboard($request, $response, $container);
-} elseif($r == "evento"){
+} elseif ($r == "evento") {
   $response = ctrlEvento($request, $response, $container);
-} elseif($r == "login"){
+} elseif ($r == "login") {
   $response = ctrlLogin($request, $response, $container);
-} elseif($r == "eventos"){
+} elseif ($r == "eventos") {
   $response = ctrlEventos($request, $response, $container);
-} elseif($r == "favoritos"){
+} elseif ($r == "favoritos") {
   $response = ctrlFavoritos($request, $response, $container);
-} elseif($r == "json"){
+} elseif ($r == "json") {
   $response = ctrlJson($request, $response, $container);
 } else {
   echo "No existe la ruta";
