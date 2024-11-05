@@ -11,7 +11,7 @@ include '../src/controllers/ctrlDashboard.php';
 include '../src/controllers/ctrlEvento.php';
 include '../src/controllers/ctrlEventos.php';
 include '../src/controllers/ctrlFavoritos.php';
-
+include '../src/controllers/ctrlLogin.php';
 /**
  * Carreguem les classes del Framework Emeset
  */
@@ -43,6 +43,8 @@ if(!isset($r)){
   $response = ctrlDashboard($request, $response, $container);
 } elseif($r == "evento"){
   $response = ctrlEvento($request, $response, $container);
+} elseif($r == "login"){
+  $response = ctrlLogin($request, $response, $container);
 } elseif($r == "eventos"){
   $response = ctrlEventos($request, $response, $container);
 } elseif($r == "favoritos"){
