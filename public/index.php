@@ -13,7 +13,7 @@ include '../src/controllers/ctrlEventos.php';
 include '../src/controllers/ctrlFavoritos.php';
 include '../src/controllers/ctrlLogin.php';
 include '../src/controllers/ctrlRegister.php';
-/**
+/** 
  * Carreguem les classes del Framework Emeset
  */
 
