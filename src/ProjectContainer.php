@@ -7,7 +7,7 @@ class ProjectContainer extends \Emeset\Container
         $this->sql = new Db($config);
         $this->config = $config;
     }
-    public function UrlsPDO(){
-        //return new UrlsPDO($this->sql->get());
+    public function Registro(){
+        return new Registro($this->sql->get());
     }
 }
