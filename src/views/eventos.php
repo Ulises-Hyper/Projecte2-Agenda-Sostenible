@@ -106,6 +106,7 @@
                     </li>
                 </ul>
             </div>
+
             <!-- Categories -->
             <div class="row g-3 mb-4">
                 <div class="col-6">

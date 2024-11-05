@@ -121,7 +121,6 @@
     </div>
 
     <!-- Event Container -->
-
     <div class="container">
         <div class="mt-3">
             <button class="btn btn-sm btn-tag bg-custom-white">

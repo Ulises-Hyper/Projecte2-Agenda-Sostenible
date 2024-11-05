@@ -12,6 +12,7 @@
 </head>
 
 <body class="bg-custom-green-lightest">
+
     <!-- Barra superior con buscador -->
     <div class="bg-custom-green-darkest py-2">
         <div class="container d-flex align-items-center justify-content-between">
