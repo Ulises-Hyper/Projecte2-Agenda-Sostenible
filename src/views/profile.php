@@ -19,7 +19,7 @@
     <!-- Edit Profile Form -->
     <div class="">
         <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5">
+            <div class="col-md-6 col-lg-5"> 
                 <div class="text-start">
                     <button class="btn btn-link text-success mb-2">
                         <i class="bi bi-arrow-left back-arrow" onclick="history.back()"></i>
