@@ -58,10 +58,18 @@ class Users
 
     public function delete($id)
     {
-        $query = "delete from links where id = :id";
+        // Cambiar el nombre del parámetro en la consulta a :id para que coincida
+        $query = "DELETE FROM users WHERE user_id = :user_id";  // Asegúrate de usar el nombre correcto para el parámetro
         $stm = $this->sql->prepare($query);
-        $stm->execute([":id" => $id]);
+        $stm->execute([":user_id" => $id]);  // El parámetro debe coincidir con el de la consulta
+
+        // Manejo de errores
+        if ($stm->errorCode() !== '00000') {
+            $err = $stm->errorInfo();
+            die("Error al eliminar: {$err[0]} - {$err[1]}\n{$err[2]}");
+        }
     }
+
 
 
     public function getById($id)
@@ -75,10 +83,11 @@ class Users
     }
 
 
-    public function getAllUsers(){
+    public function getAllUsers()
+    {
         $query = "select user_id, username, surname, name, email, role from users;";
         $results = [];
-        foreach($this->sql->query($query, PDO::FETCH_ASSOC) as $result){
+        foreach ($this->sql->query($query, PDO::FETCH_ASSOC) as $result) {
             $results[] = $result;
         }
         return $results;
