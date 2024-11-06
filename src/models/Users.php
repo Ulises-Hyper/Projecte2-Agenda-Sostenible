@@ -56,18 +56,10 @@ class Users
         return $urls;
     }
 
-    public function delete($id)
-    {
-        // Cambiar el nombre del parámetro en la consulta a :id para que coincida
-        $query = "DELETE FROM users WHERE user_id = :user_id";  // Asegúrate de usar el nombre correcto para el parámetro
+    public function delete($id){
+        $query = "DELETE FROM users WHERE user_id = :user_id";
         $stm = $this->sql->prepare($query);
-        $stm->execute([":user_id" => $id]);  // El parámetro debe coincidir con el de la consulta
-
-        // Manejo de errores
-        if ($stm->errorCode() !== '00000') {
-            $err = $stm->errorInfo();
-            die("Error al eliminar: {$err[0]} - {$err[1]}\n{$err[2]}");
-        }
+        $stm->execute([":user_id" => $id]);
     }
 
 

@@ -35,17 +35,10 @@ $container = new ProjectContainer($config);
 $sql = new Db($config);
 $users = new Users($sql->get());
 
-/* 
-  * Aquesta és la part que fa que funcioni el Front Controller.
-  * Si no hi ha cap paràmetre, carreguem la pàgina d'inici.
-  * Si hi ha paràmetre, carreguem la pàgina que correspongui.
-  * Si no existeix la pàgina, carreguem la pàgina d'error.
-  */
 if (isset($_REQUEST["r"])) {
   $r = $_REQUEST["r"];
 }
 
-/* Front Controller, aquí es decideix quina acció s'executa */
 if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
 } elseif($r == "delete"){
@@ -71,5 +64,5 @@ if (!isset($r)) {
 } else {
   echo "No existe la ruta";
 }
-/* Enviem la resposta al client. */
+
 $response->response();
