@@ -102,18 +102,26 @@
                     </thead>
                     <tbody>
                         <!-- Ejemplo de fila de usuario -->
-                        <tr>
-                            <td>1</td>
-                            <td>Juan</td>
-                            <td>Pérez</td>
-                            <td>juan.perez</td>
-                            <td>juan.perez@example.com</td>
-                            <td>Administrador</td>
-                            <td>
-                                <button class="btn btn-warning btn-sm">Editar</button>
-                                <button class="btn btn-danger btn-sm">Eliminar</button>
-                            </td>
-                        </tr>
+                        <?php if (is_array(value: $usuarios) || is_object($usuarios)): ?>
+                            <?php foreach ($usuarios as $usuario): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($usuario['user_id']); ?></td>
+                                    <td><?php echo htmlspecialchars($usuario['username']); ?></td>
+                                    <td><?php echo htmlspecialchars($usuario['surname']); ?></td>
+                                    <td><?php echo htmlspecialchars($usuario['name']); ?></td>
+                                    <td><?php echo htmlspecialchars($usuario['email']); ?></td>
+                                    <td><?php echo htmlspecialchars($usuario['role']); ?></td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm">Editar</button>
+                                        <button class="btn btn-danger btn-sm">Eliminar</button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="9">No hay usuarios registrados.</td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>

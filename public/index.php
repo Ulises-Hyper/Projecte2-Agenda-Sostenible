@@ -14,6 +14,8 @@ include '../src/controllers/ctrlFavoritos.php';
 include '../src/controllers/ctrlLogin.php';
 include '../src/controllers/ctrlRegister.php';
 include '../src/controllers/ctrlProfile.php'; 
+include '../src/controllers/ctrlDashboardList.php';
+
 /** 
  * Carreguem les classes del Framework Emeset
  */
@@ -23,6 +25,7 @@ include "../src/ProjectContainer.php";
 include "../src/Emeset/Request.php";
 include "../src/Emeset/Response.php";
 include "../src/models/Db.php";
+include "../src/models/Users.php";
 
 $request = new \Emeset\Request();
 $response = new \Emeset\Response();
@@ -41,7 +44,9 @@ if (isset($_REQUEST["r"])) {
 /* Front Controller, aquí es decideix quina acció s'executa */
 if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
-} elseif ($r == "dashboard") {
+} elseif($r == "dashboardlist"){
+  $response = ctrlDashboardList($request, $response, $container);
+}elseif ($r == "dashboard") {
   $response = ctrlDashboard($request, $response, $container);
 } elseif ($r == "evento") {
   $response = ctrlEvento($request, $response, $container);

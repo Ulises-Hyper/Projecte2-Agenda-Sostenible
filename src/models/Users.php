@@ -1,6 +1,6 @@
 <?php
 
-class Registro
+class Users
 {
 
     private PDO $sql;
@@ -26,7 +26,7 @@ class Registro
     {
         $query = "insert into Registre (Nom, Cognoms, Data_naixement, Adrea_carrer, Adrea_numero, Adrea_ciutat, Adrea_codi_postal, Ruta_resguard, Data_registre) values (:Nom, :Cognoms, :Data_naixement, :Adrea_carrer, :Adrea_numero, :Adrea_ciutat, :Adrea_codi_postal, :Ruta_resguard, :Data_registre);";
         $stm = $this->sql->prepare($query);
-        $stm->execute([":Nom" => $Nom, ":Cognoms" => $Cognoms, ":Data_naixement" => $Data_naixement, ":Adrea_carrer" => $Adrea_carrer, ":Adrea_numero"=>$Adrea_numero, ":Adrea_ciutat"=>$Adrea_ciutat, ":Adrea_codi_postal"=>$Adrea_codi_postal, ":Ruta_resguard"=>$Ruta_resguard, ":Data_registre"=>date('Y-m-d H:i:s')]);
+        $stm->execute([":Nom" => $Nom, ":Cognoms" => $Cognoms, ":Data_naixement" => $Data_naixement, ":Adrea_carrer" => $Adrea_carrer, ":Adrea_numero" => $Adrea_numero, ":Adrea_ciutat" => $Adrea_ciutat, ":Adrea_codi_postal" => $Adrea_codi_postal, ":Ruta_resguard" => $Ruta_resguard, ":Data_registre" => date('Y-m-d H:i:s')]);
 
         if ($stm->errorCode() !== '00000') {
             $err = $stm->errorInfo();
@@ -56,19 +56,37 @@ class Registro
         return $urls;
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $query = "delete from links where id = :id";
         $stm = $this->sql->prepare($query);
         $stm->execute([":id" => $id]);
     }
 
 
-    public function getById($id){
+    public function getById($id)
+    {
         $query = "select id, title, url, description from links where id = :id";
         $stm = $this->sql->prepare($query);
         $stm->execute([":id" => $id]);
         $result = $stm->fetch(PDO::FETCH_ASSOC);
-        
+
         return $result;
     }
+
+
+    public function getAllUsers(){
+        $query = "select user_id, username, surname, name, email, role from users;";
+        $results = [];
+        foreach($this->sql->query($query, PDO::FETCH_ASSOC) as $result){
+            $results[] = $result;
+        }
+        return $results;
+    }
 }
+
+
+// foreach ($sql->query($query, PDO::FETCH_ASSOC) as $tasca) {
+ //   print_r($tasca);
+// $tasques[] = $tasca["id"] . ", " . $tasca["tasca"];
+// }
