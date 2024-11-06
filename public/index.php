@@ -15,6 +15,7 @@ include '../src/controllers/ctrlLogin.php';
 include '../src/controllers/ctrlRegister.php';
 include '../src/controllers/ctrlProfile.php'; 
 include '../src/controllers/ctrlDashboardList.php';
+include '../src/controllers/ctrlDashboardDelete.php';
 
 /** 
  * Carreguem les classes del Framework Emeset
@@ -31,6 +32,9 @@ $request = new \Emeset\Request();
 $response = new \Emeset\Response();
 $container = new ProjectContainer($config);
 
+$sql = new Db($config);
+$users = new Users($sql->get());
+
 /* 
   * Aquesta és la part que fa que funcioni el Front Controller.
   * Si no hi ha cap paràmetre, carreguem la pàgina d'inici.
@@ -44,9 +48,11 @@ if (isset($_REQUEST["r"])) {
 /* Front Controller, aquí es decideix quina acció s'executa */
 if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
-} elseif($r == "dashboardlist"){
+} elseif($r == "delete"){
+  ctrlDashboardDelete($users);
+}elseif($r == "dashboard"){
   $response = ctrlDashboardList($request, $response, $container);
-}elseif ($r == "dashboard") {
+}elseif ($r == "dashboardview") {
   $response = ctrlDashboard($request, $response, $container);
 } elseif ($r == "evento") {
   $response = ctrlEvento($request, $response, $container);
