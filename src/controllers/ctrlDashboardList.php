@@ -1,6 +1,7 @@
 <?php 
 
 function ctrlDashboardList($request, $response, $container){
+
     // Obtiene la instancia del modelo Users
     $usuarioModel = $container->Users();
 
