@@ -15,6 +15,10 @@ include '../src/controllers/ctrlLogin.php';
 include '../src/controllers/ctrlRegister.php';
 include '../src/controllers/ctrlProfile.php';
 include '../src/controllers/ctrlDoRegister.php';
+include '../src/controllers/ctrlDashboardList.php';
+include '../src/controllers/ctrlDashboardDelete.php';
+include "../src/controllers/ctrlDashboardEdit.php";
+include "../src/controllers/ctrlDashboardEditUpdate.php";
 /** 
  * Carreguem les classes del Framework Emeset
  */
@@ -33,6 +37,12 @@ $container = new ProjectContainer($config);
 $sql = new Db($config);
 $users = new Users($sql->get());
 
+/* 
+  * Aquesta és la part que fa que funcioni el Front Controller.
+  * Si no hi ha cap paràmetre, carreguem la pàgina d'inici.
+  * Si hi ha paràmetre, carreguem la pàgina que correspongui.
+  * Si no existeix la pàgina, carreguem la pàgina d'error.
+  */
 if (isset($_REQUEST["r"])) {
   $r = $_REQUEST["r"];
 }
@@ -41,6 +51,12 @@ if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
 } elseif($r == "delete"){
   ctrlDashboardDelete($users);
+}elseif ($r == "ctrldashboardeditupdate") {
+  $response = ctrlDashboardEditUpdate($request, $response, $container);
+}elseif ($r == "dashboardview") {
+  $response = ctrlDashboard($request, $response, $container);
+}elseif($r == "dashboardedit"){
+  $response = ctrlDashboardEdit($request, $response, $container);
 }elseif($r == "dashboard"){
   $response = ctrlDashboardList($request, $response, $container);
 }elseif ($r == "dashboardview") {
