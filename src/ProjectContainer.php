@@ -7,7 +7,7 @@ class ProjectContainer extends \Emeset\Container
         $this->sql = new Db($config);
         $this->config = $config;
     }
-    public function Registro(){
-        return new Registro($this->sql->get());
+    public function Users(){
+        return new Users($this->sql->get());
     }
 }

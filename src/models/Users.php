@@ -1,6 +1,6 @@
 <?php
 
-class Registro
+class Users
 {
 
     private PDO $sql;
@@ -22,18 +22,6 @@ class Registro
      * @param string $description
      * @return void
      */
-    public function add($Nom, $Cognoms, $Data_naixement, $Adrea_carrer, $Adrea_numero, $Adrea_ciutat, $Adrea_codi_postal, $Ruta_resguard)
-    {
-        $query = "insert into Registre (Nom, Cognoms, Data_naixement, Adrea_carrer, Adrea_numero, Adrea_ciutat, Adrea_codi_postal, Ruta_resguard, Data_registre) values (:Nom, :Cognoms, :Data_naixement, :Adrea_carrer, :Adrea_numero, :Adrea_ciutat, :Adrea_codi_postal, :Ruta_resguard, :Data_registre);";
-        $stm = $this->sql->prepare($query);
-        $stm->execute([":Nom" => $Nom, ":Cognoms" => $Cognoms, ":Data_naixement" => $Data_naixement, ":Adrea_carrer" => $Adrea_carrer, ":Adrea_numero"=>$Adrea_numero, ":Adrea_ciutat"=>$Adrea_ciutat, ":Adrea_codi_postal"=>$Adrea_codi_postal, ":Ruta_resguard"=>$Ruta_resguard, ":Data_registre"=>date('Y-m-d H:i:s')]);
-
-        if ($stm->errorCode() !== '00000') {
-            $err = $stm->errorInfo();
-            $code = $stm->errorCode();
-            die("Error.   {$err[0]} - {$err[1]}\n{$err[2]} $query");
-        }
-    }
 
     /**
      * return the list of urls
@@ -70,5 +58,18 @@ class Registro
         $result = $stm->fetch(PDO::FETCH_ASSOC);
         
         return $result;
+    }
+
+    public function getRegister($username, $surname, $name, $email, $role, $password){
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $query = "INSERT INTO users (username, surname, name, email, role, password) VALUES (:username, :surname, :name, :email, :role, :password)";
+        $stm = $this->sql->prepare($query);
+        $stm->execute([":username" => $username, ":surname" => $surname, ":name" => $name, ":email" => $email, ":role" => $role, ":password" => $hashedPassword]);
+
+        if ($stm->errorCode() !== '00000') {
+            $err = $stm->errorInfo();
+            $code = $stm->errorCode();
+            die("Error. {$err[0]} - {$err[1]}\n{$err[2]} $query");
+        }
     }
 }
