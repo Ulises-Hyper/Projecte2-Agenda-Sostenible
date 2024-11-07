@@ -14,17 +14,6 @@ class Users
         $this->sql = $sql;
     }
 
-    /**
-     * Adds a new url into database
-     *
-     * @param string $title
-     * @param string $url
-     * @param string $description
-     * @return void
-     */
-
-    public function add($username, $surname, $name, $email, $role, $profile_img, $password)
-
     public function add($username, $surname, $name, $email, $role, $profile_img, $password)
     {
         $query = "INSERT INTO users (username, surname, name, email, role, profile_img, password) VALUES (:username, :surname, :name, :email, :role, :profile_img, :password);";
@@ -36,7 +25,6 @@ class Users
         if ($stm->errorCode() !== '00000') {
             $err = $stm->errorInfo();
             $code = $stm->errorCode();
-            die("Error. {$err[0]} - {$err[1]}\n{$err[2]} $query");
             die("Error. {$err[0]} - {$err[1]}\n{$err[2]} $query");
         }
     }
@@ -56,9 +44,7 @@ class Users
     public function getById($id)
     {
         $query = "select user_id, username, surname, name, email, role, profile_img from users where user_id = :user_id";
-        $query = "select user_id, username, surname, name, email, role, profile_img from users where user_id = :user_id";
         $stm = $this->sql->prepare($query);
-        $stm->execute([":user_id" => $id]);
         $stm->execute([":user_id" => $id]);
         $result = $stm->fetch(PDO::FETCH_ASSOC);
 
