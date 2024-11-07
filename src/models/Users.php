@@ -65,7 +65,7 @@ class Users
 
     public function getSession()
     {
-        $query = "select user_id, username, surname, name, email, role, password from users order by user_id desc limit 1;";
+        $query = "select user_id, username, surname, name, email, role, password from users order by user_id desc limit 1;"; 
         $results = [];
         foreach ($this->sql->query($query, PDO::FETCH_ASSOC) as $result) {
             $results[] = $result;

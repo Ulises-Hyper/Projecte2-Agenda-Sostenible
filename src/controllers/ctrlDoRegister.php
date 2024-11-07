@@ -23,7 +23,7 @@ function ctrlDoRegister($request, $response, $container)
         }
     }
 
-    $response->redirect("Location: index.php");
+    $response->redirect("Location: index.php"); 
     return $response;
 }
 
