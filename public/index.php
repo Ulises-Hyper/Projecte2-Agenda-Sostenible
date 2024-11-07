@@ -13,7 +13,8 @@ include '../src/controllers/ctrlEventos.php';
 include '../src/controllers/ctrlFavoritos.php';
 include '../src/controllers/ctrlLogin.php';
 include '../src/controllers/ctrlRegister.php';
-include '../src/controllers/ctrlProfile.php'; 
+include '../src/controllers/ctrlProfile.php';
+include '../src/controllers/ctrlDoRegister.php';
 include '../src/controllers/ctrlDashboardList.php';
 include '../src/controllers/ctrlDashboardDelete.php';
 include "../src/controllers/ctrlDashboardEdit.php";
@@ -37,6 +38,12 @@ $container = new ProjectContainer($config);
 $sql = new Db($config);
 $users = new Users($sql->get());
 
+/* 
+  * Aquesta és la part que fa que funcioni el Front Controller.
+  * Si no hi ha cap paràmetre, carreguem la pàgina d'inici.
+  * Si hi ha paràmetre, carreguem la pàgina que correspongui.
+  * Si no existeix la pàgina, carreguem la pàgina d'error.
+  */
 if (isset($_REQUEST["r"])) {
   $r = $_REQUEST["r"];
 }
@@ -61,6 +68,8 @@ if (!isset($r)) {
   $response = ctrlLogin($request, $response, $container);
 } elseif ($r == "register") {
   $response = ctrlRegister($request, $response, $container);
+} elseif ($r == "doregister"){
+  $response = ctrlDoRegister($request, $response, $container);
 } elseif ($r == "profile") {
   $response = ctrlProfile($request, $response, $container);
 } elseif ($r == "eventos") {

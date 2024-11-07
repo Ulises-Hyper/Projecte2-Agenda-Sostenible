@@ -24,14 +24,19 @@ class Users
      */
 
     public function add($username, $surname, $name, $email, $role, $profile_img, $password)
+
+    public function add($username, $surname, $name, $email, $role, $profile_img, $password)
     {
         $query = "INSERT INTO users (username, surname, name, email, role, profile_img, password) VALUES (:username, :surname, :name, :email, :role, :profile_img, :password);";
+        $query = "INSERT INTO users (username, surname, name, email, role, profile_img, password) VALUES (:username, :surname, :name, :email, :role, :profile_img, :password);";
         $stm = $this->sql->prepare($query);
+        $stm->execute([":username" => $username, ":surname" => $surname, ":name" => $name, ":email" => $email, ":role" => $role, ":profile_img" => $profile_img, ":password" => $password]);
         $stm->execute([":username" => $username, ":surname" => $surname, ":name" => $name, ":email" => $email, ":role" => $role, ":profile_img" => $profile_img, ":password" => $password]);
 
         if ($stm->errorCode() !== '00000') {
             $err = $stm->errorInfo();
             $code = $stm->errorCode();
+            die("Error. {$err[0]} - {$err[1]}\n{$err[2]} $query");
             die("Error. {$err[0]} - {$err[1]}\n{$err[2]} $query");
         }
     }
@@ -39,15 +44,21 @@ class Users
     public function delete($id){
         $query = "DELETE FROM users WHERE user_id = :user_id";
         $stm = $this->sql->prepare($query);
-        $stm->execute([":user_id" => $id]);
+        $stm->execute([":user_id" => $id]);  // El parámetro debe coincidir con el de la consulta
+
+        // Manejo de errores
+        if ($stm->errorCode() !== '00000') {
+            $err = $stm->errorInfo();
+            die("Error al eliminar: {$err[0]} - {$err[1]}\n{$err[2]}");
+        }
     }
-
-
 
     public function getById($id)
     {
         $query = "select user_id, username, surname, name, email, role, profile_img from users where user_id = :user_id";
+        $query = "select user_id, username, surname, name, email, role, profile_img from users where user_id = :user_id";
         $stm = $this->sql->prepare($query);
+        $stm->execute([":user_id" => $id]);
         $stm->execute([":user_id" => $id]);
         $result = $stm->fetch(PDO::FETCH_ASSOC);
 
