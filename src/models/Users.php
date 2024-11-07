@@ -14,14 +14,14 @@ class Users
         $this->sql = $sql;
     }
 
-    public function add($username, $surname, $name, $email, $role, $password)
+    public function add($user_id, $username, $surname, $name, $email, $role, $password)
     {
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO users (username, surname, name, email, role, password) VALUES (:username, :surname, :name, :email, :role, :password);";
+        $query = "INSERT INTO users (user_id ,username, surname, name, email, role, password) VALUES (:user_id, :username, :surname, :name, :email, :role, :password);";
         $stm = $this->sql->prepare($query);
-        $stm->execute([":username" => $username, ":surname" => $surname, ":name" => $name, ":email" => $email, ":role" => $role, ":password" => $hashedPassword]);
+        $stm->execute(["user_id" => $user_id ,":username" => $username, ":surname" => $surname, ":name" => $name, ":email" => $email, ":role" => $role, ":password" => $hashedPassword]);
 
         if ($stm->errorCode() !== '00000') {
             $err = $stm->errorInfo();
@@ -56,6 +56,16 @@ class Users
     public function getAllUsers()
     {
         $query = "select user_id, username, surname, name, email, role from users;";
+        $results = [];
+        foreach ($this->sql->query($query, PDO::FETCH_ASSOC) as $result) {
+            $results[] = $result;
+        }
+        return $results;
+    }
+
+    public function getSession()
+    {
+        $query = "select user_id, username, surname, name, email, role, password from users order by user_id desc limit 1;";
         $results = [];
         foreach ($this->sql->query($query, PDO::FETCH_ASSOC) as $result) {
             $results[] = $result;
