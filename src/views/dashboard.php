@@ -112,7 +112,9 @@
                                     <td><?php echo htmlspecialchars($usuario['email']); ?></td>
                                     <td><?php echo htmlspecialchars($usuario['role']); ?></td>
                                     <td>
-                                        <button class="btn btn-warning btn-sm">Editar</button>
+                                        <button class="btn btn-warning btn-sm">
+                                            <a href="/index.php?r=dashboardedit&id=<?= $usuario['user_id'] ?>">Editar</a>
+                                        </button>
                                         <button class="btn btn-danger btn-sm">
                                             <a href="/index.php?r=delete&id=<?= $usuario['user_id'] ?>">Borrar</a>
                                         </button>
