@@ -11,6 +11,5 @@ function ctrlDoLogin($request, $response, $container){
         $response->setSession('user', $exist);
         $response->redirect('Location: index.php');
     }
-
     return $response;
 }

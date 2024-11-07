@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="/src/css/style.css">
     <script src="/src/js/main.js"></script>
 </head>
-
 <body class="bg-custom-green-lightest d-flex align-items-center justify-content-center vh-100">
     <!-- Contenedor centrado para Login Form -->
     <div class="container">

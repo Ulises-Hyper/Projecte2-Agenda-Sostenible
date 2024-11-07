@@ -96,7 +96,6 @@ class Users
             ':role' => $data['role'],
             ':user_id' => $id
         ];
-
         // Agregar `password` e `imgProfile` solo si existen en `$data`
         if (!empty($data['password'])) {
             $params[':password'] = password_hash($data['password'], PASSWORD_DEFAULT);
