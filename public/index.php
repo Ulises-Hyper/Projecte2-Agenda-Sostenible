@@ -16,6 +16,8 @@ include '../src/controllers/ctrlRegister.php';
 include '../src/controllers/ctrlProfile.php'; 
 include '../src/controllers/ctrlDashboardList.php';
 include '../src/controllers/ctrlDashboardDelete.php';
+include "../src/controllers/ctrlDashboardEdit.php";
+include "../src/controllers/ctrlDashboardEditUpdate.php";
 
 /** 
  * Carreguem les classes del Framework Emeset
@@ -50,6 +52,12 @@ if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
 } elseif($r == "delete"){
   ctrlDashboardDelete($users);
+}elseif ($r == "dashboardeditupdate") {
+  $response = ctrlDashboardEditUpdate($request, $response, $container);
+}elseif($r == "dashboardeditview"){
+  $response = ctrlDashboardEditView($request, $response, $container);
+}elseif($r == "dashboardedit"){
+  $response = ctrlDashboardEdit($request, $response, $container);
 }elseif($r == "dashboard"){
   $response = ctrlDashboardList($request, $response, $container);
 }elseif ($r == "dashboardview") {
