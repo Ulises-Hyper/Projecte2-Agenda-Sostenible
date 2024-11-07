@@ -26,14 +26,14 @@
                 <div class="card shadow">
                     <div class="card-body p-4">
                         <h1 class="text-center text-custom-green mb-4">Login</h1>
-                        <form id="registrationForm">
+                        <form id="registrationForm" method="POST" action="/index.php?r=dologin">
                             <div class="form-floating mb-2">
-                                <input type="text" class="form-control" id="user" placeholder="Usuario" required>
+                                <input type="text" class="form-control" id="user" name="username" placeholder="Usuario" required>
                                 <label for="user">Usuario</label>
                                 <div class="invalid-feedback">El nombre de usuario es obligatorio.</div>
                             </div>
                             <div class="form-floating mb-2">
-                                <input type="password" class="form-control" id="password" placeholder="Contraseña" required minlength="8" maxlength="20">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required minlength="8" maxlength="20">
                                 <label for="password">Contraseña</label>
                                 <div class="invalid-feedback">La contraseña debe tener entre 8 y 20 caracteres.</div>
                             </div>
