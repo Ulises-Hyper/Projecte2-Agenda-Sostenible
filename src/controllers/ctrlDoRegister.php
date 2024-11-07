@@ -13,7 +13,7 @@ function ctrlDoRegister($request, $response, $container){
     $password = $request->get(INPUT_POST, 'password');
 
     $db = $container->Users();
-    $db->getRegister($username, $surname, $name, $email, $role, $password);
+    $db->add($username, $surname, $name, $email, $role, $password);
     }
 
     $response->redirect("Location: index.php");

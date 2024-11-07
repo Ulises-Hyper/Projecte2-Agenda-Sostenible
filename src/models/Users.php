@@ -14,13 +14,14 @@ class Users
         $this->sql = $sql;
     }
 
-    public function add($username, $surname, $name, $email, $role, $profile_img, $password)
+    public function add($username, $surname, $name, $email, $role, $password)
     {
-        $query = "INSERT INTO users (username, surname, name, email, role, profile_img, password) VALUES (:username, :surname, :name, :email, :role, :profile_img, :password);";
-        $query = "INSERT INTO users (username, surname, name, email, role, profile_img, password) VALUES (:username, :surname, :name, :email, :role, :profile_img, :password);";
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $query = "INSERT INTO users (username, surname, name, email, role, password) VALUES (:username, :surname, :name, :email, :role, :password);";
         $stm = $this->sql->prepare($query);
-        $stm->execute([":username" => $username, ":surname" => $surname, ":name" => $name, ":email" => $email, ":role" => $role, ":profile_img" => $profile_img, ":password" => $password]);
-        $stm->execute([":username" => $username, ":surname" => $surname, ":name" => $name, ":email" => $email, ":role" => $role, ":profile_img" => $profile_img, ":password" => $password]);
+        $stm->execute([":username" => $username, ":surname" => $surname, ":name" => $name, ":email" => $email, ":role" => $role, ":password" => $hashedPassword]);
 
         if ($stm->errorCode() !== '00000') {
             $err = $stm->errorInfo();
@@ -29,7 +30,8 @@ class Users
         }
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $query = "DELETE FROM users WHERE user_id = :user_id";
         $stm = $this->sql->prepare($query);
         $stm->execute([":user_id" => $id]);  // El parámetro debe coincidir con el de la consulta
@@ -63,46 +65,46 @@ class Users
 
     // Función para hacer un update en el dashboard.
     public function update($id, $data)
-{
-    $query = "UPDATE users SET 
+    {
+        $query = "UPDATE users SET 
                 name = :name, 
                 surname = :surname, 
                 username = :username, 
                 email = :email, 
                 role = :role";
 
-    // Añade el campo de contraseña solo si está presente
-    if (!empty($data['password'])) {
-        $query .= ", password = :password";
+        // Añade el campo de contraseña solo si está presente
+        if (!empty($data['password'])) {
+            $query .= ", password = :password";
+        }
+
+        // Añade el campo de imagen solo si está presente
+        if (!empty($data['profile_img'])) {
+            $query .= ", profile_img = :profile_img";
+        }
+
+        $query .= " WHERE user_id = :user_id";
+
+        $stm = $this->sql->prepare($query);
+
+        // Asignar valores para los parámetros obligatorios
+        $params = [
+            ':name' => $data['name'],
+            ':surname' => $data['surname'],
+            ':username' => $data['username'],
+            ':email' => $data['email'],
+            ':role' => $data['role'],
+            ':user_id' => $id
+        ];
+
+        // Agregar `password` e `imgProfile` solo si existen en `$data`
+        if (!empty($data['password'])) {
+            $params[':password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        }
+        if (!empty($data['profile_img'])) {
+            $params[':profile_img'] = $data['profile_img'];
+        }
+
+        $stm->execute($params);
     }
-
-    // Añade el campo de imagen solo si está presente
-    if (!empty($data['profile_img'])) {
-        $query .= ", profile_img = :profile_img";
-    }
-
-    $query .= " WHERE user_id = :user_id";
-
-    $stm = $this->sql->prepare($query);
-
-    // Asignar valores para los parámetros obligatorios
-    $params = [
-        ':name' => $data['name'],
-        ':surname' => $data['surname'],
-        ':username' => $data['username'],
-        ':email' => $data['email'],
-        ':role' => $data['role'],
-        ':user_id' => $id
-    ];
-
-    // Agregar `password` e `imgProfile` solo si existen en `$data`
-    if (!empty($data['password'])) {
-        $params[':password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-    }
-    if (!empty($data['profile_img'])) {
-        $params[':profile_img'] = $data['profile_img'];
-    }
-
-    $stm->execute($params);
-}
 }
