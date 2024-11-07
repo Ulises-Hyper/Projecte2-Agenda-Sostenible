@@ -26,29 +26,33 @@
                 <div class="card shadow">
                     <div class="card-body p-3">
                         <h1 class="text-center text-custom-green mb-4">Registrarse</h1>
-                        <form id="registrationForm">
+                        <form action="?r=doregister" id="registrationForm" method="post" enctype="multipart/form-data">
                             <div class="form-floating mb-2">
-                                <input type="text" class="form-control" id="name" placeholder="Nombre" required>
+                                <input name="name" type="text" class="form-control" id="name" placeholder="Nombre" required>
                                 <label for="name">Nombre</label>
                                 <div class="invalid-feedback">El nombre es obligatorio.</div>
                             </div>
                             <div class="form-floating mb-2">
-                                <input type="text" class="form-control" id="lastname" placeholder="Apellidos" required>
+                                <input name="surname" type="text" class="form-control" id="lastname" placeholder="Apellidos" required>
                                 <label for="lastname">Apellidos</label>
                                 <div class="invalid-feedback">Los apellidos son obligatorios.</div>
                             </div>
                             <div class="form-floating mb-2">
-                                <input type="text" class="form-control" id="user" placeholder="Usuario" required>
+                                <input name="username" type="text" class="form-control" id="user" placeholder="Usuario" required>
                                 <label for="user">Usuario</label>
                                 <div class="invalid-feedback">El nombre de usuario es obligatorio.</div>
                             </div>
                             <div class="form-floating mb-2">
-                                <input type="email" class="form-control" id="email" placeholder="Correo Electrónico" required>
+                                <input name="email" type="email" class="form-control" id="email" placeholder="Correo Electrónico" required>
                                 <label for="email">Correo Electrónico</label>
                                 <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
                             </div>
+                            <div class="form-floating mb-2 ">
+                                <input name="role" type="role" class="form-control" id="role" hidden value="user">
+                                
+                            </div>
                             <div class="form-floating mb-2">
-                                <input type="password" class="form-control" id="password" placeholder="Contraseña" required minlength="8" maxlength="20">
+                                <input name="password" type="password" class="form-control" id="password" placeholder="Contraseña" required minlength="8" maxlength="20">
                                 <label for="password">Contraseña</label>
                                 <div class="invalid-feedback">La contraseña debe tener entre 8 y 20 caracteres.</div>
                             </div>

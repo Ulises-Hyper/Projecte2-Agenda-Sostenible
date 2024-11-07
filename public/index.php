@@ -13,10 +13,8 @@ include '../src/controllers/ctrlEventos.php';
 include '../src/controllers/ctrlFavoritos.php';
 include '../src/controllers/ctrlLogin.php';
 include '../src/controllers/ctrlRegister.php';
-include '../src/controllers/ctrlProfile.php'; 
-include '../src/controllers/ctrlDashboardList.php';
-include '../src/controllers/ctrlDashboardDelete.php';
-
+include '../src/controllers/ctrlProfile.php';
+include '../src/controllers/ctrlDoRegister.php';
 /** 
  * Carreguem les classes del Framework Emeset
  */
@@ -53,6 +51,8 @@ if (!isset($r)) {
   $response = ctrlLogin($request, $response, $container);
 } elseif ($r == "register") {
   $response = ctrlRegister($request, $response, $container);
+} elseif ($r == "doregister"){
+  $response = ctrlDoRegister($request, $response, $container);
 } elseif ($r == "profile") {
   $response = ctrlProfile($request, $response, $container);
 } elseif ($r == "eventos") {
