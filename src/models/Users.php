@@ -54,7 +54,7 @@ class Users
         $stm = $this->sql->prepare($query);
         $stm->execute([":user_id" => $id]);
         $result = $stm->fetch(PDO::FETCH_ASSOC);
-
+ 
         return $result;
     }
 

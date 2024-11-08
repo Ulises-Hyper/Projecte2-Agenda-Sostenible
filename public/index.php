@@ -77,7 +77,7 @@ if (!isset($r)) {
 } elseif ($r == "eventos") {
   $response = ctrlEventos($request, $response, $container);
 } elseif ($r == "favoritos") {
-  $response = ctrlFavoritos($request, $response, $container);
+  $response = ctrlFavoritos($request, $response, $container); 
 } elseif ($r == "json") {
   $response = ctrlJson($request, $response, $container);
 } else {
