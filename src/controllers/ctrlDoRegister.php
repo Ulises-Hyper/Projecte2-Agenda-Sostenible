@@ -1,12 +1,10 @@
 <?php
 
-
 function ctrlDoRegister($request, $response, $container)
 {
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $user_id = $request->get(INPUT_POST, "user_id");
+        // Obtener datos del formulario
         $username = $request->get(INPUT_POST, 'username');
         $surname = $request->get(INPUT_POST, 'surname');
         $name = $request->get(INPUT_POST, 'name');
@@ -14,16 +12,27 @@ function ctrlDoRegister($request, $response, $container)
         $role = $request->get(INPUT_POST, 'role');
         $password = $request->get(INPUT_POST, 'password');
 
+        // Obtener instancia de la base de datos
         $db = $container->Users();
-        $db->add($user_id ,$username, $surname, $name, $email, $role, $password);
-        $exist = $db->getSession($user_id, $username, $surname, $name, $email, $role, $password);
 
-        if ($exist) {
-            $response->setSession('user', $exist);
+        // Insertar usuario en la base de datos
+        $db->add($username, $surname, $name, $email, $role, $password);
+
+        // Obtener el ID del último usuario insertado
+        $userId = $db->lastInsertId(); // Este método debe estar definido en tu clase Users
+
+        // Recuperar la información del usuario usando el userId
+        $userData = $db->getById($userId);
+
+        // Crear la sesión si el usuario fue recuperado exitosamente
+        if ($userData) {
+            $response->setSession('user', $userData);
         }
+
+        // Redirigir a la página de perfil
+        $response->redirect("Location: index.php"); 
     }
 
-    $response->redirect("Location: index.php"); 
     return $response;
 }
 

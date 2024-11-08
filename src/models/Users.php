@@ -14,20 +14,25 @@ class Users
         $this->sql = $sql;
     }
 
-    public function add($user_id, $username, $surname, $name, $email, $role, $password)
+    public function add($username, $surname, $name, $email, $role, $password)
     {
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO users (user_id ,username, surname, name, email, role, password) VALUES (:user_id, :username, :surname, :name, :email, :role, :password);";
+        $query = "INSERT INTO users (username, surname, name, email, role, password) VALUES (:username, :surname, :name, :email, :role, :password);";
         $stm = $this->sql->prepare($query);
-        $stm->execute(["user_id" => $user_id ,":username" => $username, ":surname" => $surname, ":name" => $name, ":email" => $email, ":role" => $role, ":password" => $hashedPassword]);
+        $stm->execute([":username" => $username, ":surname" => $surname, ":name" => $name, ":email" => $email, ":role" => $role, ":password" => $hashedPassword]);
+
+        $id = $this->sql->lastInsertId();
 
         if ($stm->errorCode() !== '00000') {
             $err = $stm->errorInfo();
             $code = $stm->errorCode();
             die("Error. {$err[0]} - {$err[1]}\n{$err[2]} $query");
         }
+
+
+        return $id;
     }
 
     public function delete($id)
@@ -63,15 +68,15 @@ class Users
         return $results;
     }
 
-    public function getSession()
+    /*public function getSession($user_id, $username, $surname, $name, $email, $role, $password)
     {
         $query = "select user_id, username, surname, name, email, role, password from users order by user_id desc limit 1;"; 
-        $results = [];
+        $results = [$user_id, $username, $surname, $name, $email, $role, $password];
         foreach ($this->sql->query($query, PDO::FETCH_ASSOC) as $result) {
             $results[] = $result;
         }
         return $results;
-    }
+    }*/
 
     // Función para hacer un update en el dashboard.
     public function update($id, $data)
@@ -117,12 +122,18 @@ class Users
         $stm->execute($params);
     }
 
-    public function getUserLogin($username, $password){
+    public function getUserLogin($username, $password)
+    {
         $query = "select user_id, username, surname, name, email, role, password from users where username = :username and password = :password ";
         $stm = $this->sql->prepare($query);
         $stm->execute([":username" => $username, ":password" => $password]);
         $result = $stm->fetch(PDO::FETCH_ASSOC);
-        
+
         return $result;
+    }
+
+    public function lastInsertId()
+    {
+        return $this->sql->lastInsertId();
     }
 }

@@ -20,7 +20,6 @@ include '../src/controllers/ctrlDashboardDelete.php';
 include "../src/controllers/ctrlDashboardEdit.php";
 include "../src/controllers/ctrlDashboardEditUpdate.php";
 include "../src/controllers/ctrlDoLogin.php";
-
 /** 
  * Carreguem les classes del Framework Emeset
  */

@@ -42,37 +42,37 @@
                             <input type="file" id="profileImageInput" accept="image/*" name="profileImg" onchange="previewImage(event)" style="display: none;">
                         </div>
 
-                        <form id="profileEditForm" method="POST" enctype="multipart/form-data">
+                        <form action="?r=doprofileupdate" id="profileEditForm" method="POST" enctype="multipart/form-data">
                             <div class="mb-2">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Juan" value="Juan" required>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" value="<?php echo  htmlspecialchars($userData['name'])?>" required>
                                 <div class="invalid-feedback">El nombre es obligatorio.</div>
                             </div>
                             <div class="mb-2">
-                                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Pérez" value="Pérez" required>
+                                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Apellidos" value="<?= $userData['username']?>" required>
                                 <div class="invalid-feedback">Los apellidos son obligatorios.</div>
                             </div>
                             <div class="mb-2">
-                                <input type="text" class="form-control" id="user" name="user" placeholder="juan.perez" value="juan.perez" required>
+                                <input type="text" class="form-control" id="user" name="user" placeholder="Usuario" value="<?= $userData['surname']?>" required>
                                 <div class="invalid-feedback">El nombre de usuario es obligatorio.</div>
                             </div>
                             <div class="mb-2">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="juan.perez@email.com" value="juan.perez@email.com" required>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?= $userData['email']?>" required>
                                 <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
                             </div>
                             <div class="mb-2">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" minlength="8" maxlength="20" required>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" minlength="8" maxlength="20">
                                 <div class="invalid-feedback">La contraseña debe tener entre 8 y 20 caracteres.</div>
                             </div>
                             <div class="mb-2">
-                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Repetir Contraseña" minlength="8" maxlength="20" required>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Repetir Contraseña" minlength="8" maxlength="20">
                                 <div class="invalid-feedback">Las contraseñas no coinciden</div>
                             </div>
                             <div class="mb-2">
-                                <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Nueva Contraseña" minlength="8" maxlength="20" required>
+                                <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Nueva Contraseña" minlength="8" maxlength="20">
                                 <div class="invalid-feedback">La nueva contraseña debe tener entre 8 y 20 caracteres.</div>
                             </div>
                             <div class="mb-2">
-                                <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword" placeholder="Repetir Nueva Contraseña" minlength="8" maxlength="20" required>
+                                <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword" placeholder="Repetir Nueva Contraseña" minlength="8" maxlength="20">
                                 <div class="invalid-feedback">Las nuevas contraseñas no coinciden.</div>
                             </div>
                             <div class="d-flex justify-content-end">
