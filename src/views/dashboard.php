@@ -141,41 +141,42 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" enctype="multipart/form-data">
+                    <form method="POST" enctype="multipart/form-data" action="/index.php?r=dashboardadduser">
+                        <!-- <input type="hidden" name="user_id" value="//htmlspecialchars($user['user_id'])"> -->
                         <div class="mb-3">
-                            <label for="Name" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" name="Name" id="Name" required>
+                            <label for="Name" class="form-label">Usuario</label>
+                            <input type="text" class="form-control" name="username" id="name" required>
                         </div>
                         <div class="mb-3">
                             <label for="surName" class="form-label">Apellidos</label>
-                            <input type="text" class="form-control" name="surName" id="surName" required>
+                            <input type="text" class="form-control" name="surname" id="surname" required>
                         </div>
                         <div class="mb-3">
-                            <label for="userName" class="form-label">Usuario</label>
-                            <input type="text" class="form-control" name="userName" id="userName" required>
+                            <label for="userName" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" name="name" id="username" required>
                         </div>
                         <div class="mb-3">
                             <label for="userEmail" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" name="userEmail" id="userEmail" required>
+                            <input type="email" class="form-control" name="email" id="useremail" required>
                         </div>
                         <div class="mb-3">
                             <label for="userRole" class="form-label">Rol</label>
-                            <select class="form-select" name="userRole" id="userRole">
+                            <select class="form-select" name="userole" id="userole">
                                 <option value="user">Usuario</option>
                                 <option value="administrator">Administrador</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="imgProfile" class="form-label">Imágen de Perfil</label>
-                            <input type="file" class="form-control" name="imgProfile" id="imgProfile">
+                            <input type="file" class="form-control" name="img_profile" id="imgProfile">
                         </div>
                         <div class="mb-3">
                             <label for="Password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" name="Password" id="Password" required>
+                            <input type="password" class="form-control" name="password" id="Password" required>
                         </div>
                         <div class="mb-3">
                             <label for="repeatPassword" class="form-label">Repetir Contraseña</label>
-                            <input type="password" class="form-control" name="repeatPassword" id="repeatPassword" required>
+                            <input type="password" class="form-control" name="repeatpassword" id="repeatPassword" required>
                         </div>
                         <button type="submit" class="btn btn-success">Guardar</button>
                     </form>
