@@ -19,6 +19,7 @@ include '../src/controllers/ctrlDashboardList.php';
 include '../src/controllers/ctrlDashboardDelete.php';
 include "../src/controllers/ctrlDashboardEdit.php";
 include "../src/controllers/ctrlDashboardEditUpdate.php";
+include "../src/controllers/ctrlDashboardAddUser.php";
 include "../src/controllers/ctrlDoLogin.php";
 
 /** 
@@ -53,8 +54,10 @@ if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
 } elseif($r == "dologin"){
   $response = ctrlDoLogin($request, $response, $container);
-}elseif($r == "delete"){
-  ctrlDashboardDelete($users);
+} elseif($r == "dashboardadduser"){
+  $response = ctrlDashboardAddUser($request, $response, $container);
+} elseif($r == "delete"){
+  ctrlDashboardDelete(users: $users);
 }elseif ($r == "dashboardeditupdate") {
   $response = ctrlDashboardEditUpdate($request, $response, $container);
 }elseif($r == "dashboardeditview"){

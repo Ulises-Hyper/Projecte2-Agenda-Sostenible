@@ -14,6 +14,22 @@ class Users
         $this->sql = $sql;
     }
 
+    public function addAllUser($username, $surname, $name, $email, $role, $profile_img, $password)
+    {
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $query = "INSERT INTO users (username, surname, name, email, role, profile_img, password) VALUES (:username, :surname, :name, :email, :role, :profile_img, :password);";
+        $stm = $this->sql->prepare($query);
+        $stm->execute([":username" => $username, ":surname" => $surname, ":name" => $name, ":email" => $email, ":role" => $role, ":profile_img" => $profile_img, ":password" => $hashedPassword]);
+
+        if ($stm->errorCode() !== '00000') {
+            $err = $stm->errorInfo();
+            $code = $stm->errorCode();
+            die("Error. {$err[0]} - {$err[1]}\n{$err[2]} $query");
+        }
+    }
+
     public function add($user_id, $username, $surname, $name, $email, $role, $password)
     {
 
@@ -56,6 +72,16 @@ class Users
     public function getAllUsers()
     {
         $query = "select user_id, username, surname, name, email, role from users;";
+        $results = [];
+        foreach ($this->sql->query($query, PDO::FETCH_ASSOC) as $result) {
+            $results[] = $result;
+        }
+        return $results;
+    }
+
+    public function getAll()
+    {
+        $query = "select user_id, username, surname, name, email, role, profile_img, password from users;";
         $results = [];
         foreach ($this->sql->query($query, PDO::FETCH_ASSOC) as $result) {
             $results[] = $result;
