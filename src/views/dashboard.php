@@ -65,11 +65,11 @@
                     </div>
                 <?php else: ?>
                     <!-- Botones de registro e inicio de sesión para usuarios no logueados -->
-                    <div class="col-md-3 text-end">
+                    <div class="text-end">
                         <button type="button" class="hover-white me-2">
                             <a href="/?r=login">Iniciar Sesión</a>
                         </button>
-                        <button type="button" class="hover-white">
+                        <button type="button" class="hover-white me-2">
                             <a href="/?r=register">Registrarse</a>
                         </button>
                     </div>
