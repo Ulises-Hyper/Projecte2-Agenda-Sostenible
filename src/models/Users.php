@@ -70,7 +70,7 @@ class Users
         $stm = $this->sql->prepare($query);
         $stm->execute([":user_id" => $id]);
         $result = $stm->fetch(PDO::FETCH_ASSOC);
- 
+
         return $result;
     }
 
@@ -148,15 +148,27 @@ class Users
         $stm->execute($params);
     }
 
-    public function getUserLogin($username, $password)
-    {
-        $query = "select user_id, username, surname, name, email, role, password from users where username = :username and password = :password ";
+    public function getUserLogin($username, $password){
+        // Seleccionamos el hash de la contraseña y otros datos del usuario
+        $query = "SELECT user_id, username, surname, name, email, role, password FROM users WHERE username = :username";
         $stm = $this->sql->prepare($query);
-        $stm->execute([":username" => $username, ":password" => $password]);
-        $result = $stm->fetch(PDO::FETCH_ASSOC);
 
-        return $result;
+        // Ejecutamos la consulta solo con el nombre de usuario
+        $stm->execute([":username" => $username]);
+
+        // Obtenemos el resultado
+        $user = $stm->fetch(PDO::FETCH_ASSOC);
+
+        // Si el usuario existe, verificamos la contraseña
+        if ($user && password_verify($password, $user['password'])) {
+            // Si la verificación es exitosa, retornamos los datos del usuario
+            return $user;
+        }
+
+        // Si no coincide o el usuario no existe, retornamos false
+        return false;
     }
+
 
     public function lastInsertId()
     {
