@@ -22,6 +22,12 @@ include "../src/controllers/ctrlDashboardEditUpdate.php";
 include "../src/controllers/ctrlDashboardAddUser.php";
 include "../src/controllers/ctrlDoLogin.php";
 include "../src/controllers/ctrlDoLogout.php";
+
+// Archivos Middleware
+
+include "../src/middleware/isLogged.php";
+include "../src/middleware/isAdmin.php";
+
 /** 
  * Carreguem les classes del Framework Emeset
  */
@@ -57,19 +63,19 @@ if (!isset($r)) {
 }elseif($r == "dologin"){
   $response = ctrlDoLogin($request, $response, $container);
 } elseif($r == "dashboardadduser"){
-  $response = ctrlDashboardAddUser($request, $response, $container);
+  $response = isAdmin($request, $response, $container, "ctrlDashboardAddUser");
 } elseif($r == "delete"){
   ctrlDashboardDelete(users: $users);
 }elseif ($r == "dashboardeditupdate") {
-  $response = ctrlDashboardEditUpdate($request, $response, $container);
+  $response = isAdmin($request, $response, $container, "ctrlDashboardEditUpdate");
 }elseif($r == "dashboardeditview"){
-  $response = ctrlDashboardEditView($request, $response, $container);
+  $response = isAdmin($request, $response, $container, "ctrlDashboardEditView");
 }elseif($r == "dashboardedit"){
-  $response = ctrlDashboardEdit($request, $response, $container);
+  $response = isAdmin($request, $response, $container, "ctrlDashboardEdit");
 }elseif($r == "dashboard"){
-  $response = ctrlDashboardList($request, $response, $container);
+  $response = isAdmin($request, $response, $container, "ctrlDashboardList");
 }elseif ($r == "dashboardview") {
-  $response = ctrlDashboard($request, $response, $container);
+  $response = isAdmin($request, $response, $container, "ctrlDashboard");
 } elseif ($r == "evento") {
   $response = ctrlEvento($request, $response, $container);
 } elseif ($r == "login") {
@@ -79,11 +85,11 @@ if (!isset($r)) {
 } elseif ($r == "doregister"){
   $response = ctrlDoRegister($request, $response, $container);
 } elseif ($r == "profile") {
-  $response = ctrlProfile($request, $response, $container);
+  $response = isLogged($request, $response, $container, "ctrlProfile");
 } elseif ($r == "eventos") {
   $response = ctrlEventos($request, $response, $container);
 } elseif ($r == "favoritos") {
-  $response = ctrlFavoritos($request, $response, $container); 
+  $response = isLogged($request, $response, $container, "ctrlFavoritos");
 } elseif ($r == "json") {
   $response = ctrlJson($request, $response, $container);
 } else {
