@@ -21,6 +21,7 @@ include "../src/controllers/ctrlDashboardEdit.php";
 include "../src/controllers/ctrlDashboardEditUpdate.php";
 include "../src/controllers/ctrlDashboardAddUser.php";
 include "../src/controllers/ctrlDoLogin.php";
+include "../src/controllers/ctrlDoLogout.php";
 /** 
  * Carreguem les classes del Framework Emeset
  */
@@ -51,7 +52,9 @@ if (isset($_REQUEST["r"])) {
 
 if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
-} elseif($r == "dologin"){
+} elseif($r == "dologout"){
+  $response = ctrlDoLogout($request, $response, $container);
+}elseif($r == "dologin"){
   $response = ctrlDoLogin($request, $response, $container);
 } elseif($r == "dashboardadduser"){
   $response = ctrlDashboardAddUser($request, $response, $container);
