@@ -24,6 +24,7 @@ include "../src/controllers/ctrlDoLogin.php";
 include "../src/controllers/ctrlDoLogout.php";
 include "../src/controllers/ctrlConsejos.php";
 include "../src/controllers/ctrlCrearEvento.php";
+include "../src/controllers/ctrlGuardarEvento.php";
 
 // Archivos Middleware
 
@@ -40,6 +41,7 @@ include "../src/Emeset/Request.php";
 include "../src/Emeset/Response.php";
 include "../src/models/Db.php";
 include "../src/models/Users.php";
+include "../src/models/Events.php";
 
 $request = new \Emeset\Request();
 $response = new \Emeset\Response();
@@ -96,6 +98,8 @@ if (!isset($r)) {
   $response = isLogged($request, $response, $container, "ctrlFavoritos");
 } elseif ($r == "crearevento") {
   $response = ctrlCrearEvento($request, $response, $container);
+} elseif ($r == "guardarevento") {
+  $response = ctrlGuardarEvento($request, $response, $container);
 } elseif ($r == "json") {
   $response = ctrlJson($request, $response, $container);
 } else {

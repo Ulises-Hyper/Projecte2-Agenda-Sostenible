@@ -170,6 +170,7 @@ class Users
     }
 
 
+
     public function lastInsertId()
     {
         return $this->sql->lastInsertId();

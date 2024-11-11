@@ -115,7 +115,7 @@
                 </div>
                 <?php if ($_SESSION['user']['role'] === 'administrator'): ?>
                     <div class="ms-auto">
-                        <a class="dropdown-item" href="index.php?r=crearevent"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B5733" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                        <a class="dropdown-item" href="index.php?r=crearevento"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B5733" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg></a>
@@ -195,7 +195,7 @@
                             <span class="text-custom-green">NOV</span>
                         </div>
                         <div class="flex-grow-1">
-                            <h5 class="card-title">Taller de Reciclaje Creativo</h5>
+                            <h5 class="card-title"><?php echo  htmlspecialchars($events['event_title'])?></h5>
                             <p class="card-text text-muted small">Aprende a dar una segunda vida a materiales
                                 reciclables</p>
                             <div class="d-flex gap-3 text-muted small">
