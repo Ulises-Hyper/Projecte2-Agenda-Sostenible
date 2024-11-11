@@ -195,7 +195,7 @@
                             <span class="text-custom-green">NOV</span>
                         </div>
                         <div class="flex-grow-1">
-                            <h5 class="card-title"><?php echo  htmlspecialchars($events['event_title'])?></h5>
+                            <h5 class="card-title">Taller de Reciclaje Creativo</h5>
                             <p class="card-text text-muted small">Aprende a dar una segunda vida a materiales
                                 reciclables</p>
                             <div class="d-flex gap-3 text-muted small">
