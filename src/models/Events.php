@@ -9,7 +9,7 @@ class Events
      *
      * @param PDO $sql Database connection object (PDO)
      */
-    public function __construct(PDO $sql)
+    public function __construct(PDO $sql) 
     {
         $this->sql = $sql;
     }

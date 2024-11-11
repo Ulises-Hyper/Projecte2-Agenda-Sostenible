@@ -38,7 +38,7 @@ include "../src/middleware/isAdmin.php";
 include "../src/Emeset/Container.php";
 include "../src/ProjectContainer.php";
 include "../src/Emeset/Request.php";
-include "../src/Emeset/Response.php";
+include "../src/Emeset/Response.php"; 
 include "../src/models/Db.php";
 include "../src/models/Users.php";
 include "../src/models/Events.php";
