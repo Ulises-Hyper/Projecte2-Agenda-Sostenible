@@ -23,6 +23,7 @@ include "../src/controllers/ctrlDashboardAddUser.php";
 include "../src/controllers/ctrlDoLogin.php";
 include "../src/controllers/ctrlDoLogout.php";
 include "../src/controllers/ctrlConsejos.php";
+include "../src/controllers/ctrlCrearEvento.php";
 
 // Archivos Middleware
 
@@ -93,6 +94,8 @@ if (!isset($r)) {
   $response = ctrlEventos($request, $response, $container);
 } elseif ($r == "favoritos") {
   $response = isLogged($request, $response, $container, "ctrlFavoritos");
+} elseif ($r == "crearevento") {
+  $response = ctrlCrearEvento($request, $response, $container);
 } elseif ($r == "json") {
   $response = ctrlJson($request, $response, $container);
 } else {

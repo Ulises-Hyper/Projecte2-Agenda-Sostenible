@@ -108,10 +108,21 @@
     <div class="container py-4">
         <div class="bg-custom-green-light">
             <!-- Hero Section -->
-            <div class="mb-4">
-                <h1 class="fs-2 fw-bold">Eventos</h1>
-                <p class="text-muted">Descubre todas las actividades y eventos sostenibles en Figueres</p>
+            <div class="mb-4 d-flex justify-content-between align-items-start">
+                <div>
+                    <h1 class="fs-2 fw-bold">Eventos</h1>
+                    <p class="text-muted">Descubre todas las actividades y eventos sostenibles en Figueres</p>
+                </div>
+                <?php if ($_SESSION['user']['role'] === 'administrator'): ?>
+                    <div class="ms-auto">
+                        <a class="dropdown-item" href="index.php?r=crearevent"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B5733" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg></a>
+                    </div>
+                <?php endif; ?>
             </div>
+
 
             <!-- Time Filters -->
             <div class="mb-4 overflow-auto">
