@@ -22,6 +22,7 @@ include "../src/controllers/ctrlDashboardEditUpdate.php";
 include "../src/controllers/ctrlDashboardAddUser.php";
 include "../src/controllers/ctrlDoLogin.php";
 include "../src/controllers/ctrlDoLogout.php";
+include "../src/controllers/ctrlConsejos.php";
 
 // Archivos Middleware
 
@@ -58,6 +59,8 @@ if (isset($_REQUEST["r"])) {
 
 if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
+} elseif($r == "consejos"){
+  $response = ctrlConsejos($request, $response, $container);
 } elseif($r == "dologout"){
   $response = ctrlDoLogout($request, $response, $container);
 }elseif($r == "dologin"){
