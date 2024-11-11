@@ -121,7 +121,7 @@
                             </svg></a>
                     </div>
                 <?php endif; ?>
-            </div>
+            </div> 
 
 
             <!-- Time Filters -->

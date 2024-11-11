@@ -14,7 +14,7 @@
     <script src="/src/js/main.js"></script>
 </head>
 <body class="bg-custom-green-lightest">
-    <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="container d-flex justify-content-center align-items-center vh-100"> 
         <div class="col-md-6">
             <h2 class="fs-3 fw-bold text-custom-green-darkest text-center">Añadir Evento</h2>
             <form action="index.php?r=guardarEvento" method="POST" class="bg-custom-white p-4 rounded shadow">
