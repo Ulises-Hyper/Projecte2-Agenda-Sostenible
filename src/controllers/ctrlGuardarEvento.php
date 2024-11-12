@@ -15,7 +15,7 @@ function ctrlGuardarEvento($request, $response, $container){
         $eventModel->addEvent($event_title, $event_description, $event_location, $event_type, $event_comment, $date_start, $date_end);
     }
     
-    $response->redirect("Location: index.php?r=eventos"); 
+    $response->redirect("Location: index.php?r=eventos");  
     return $response;
 
 }

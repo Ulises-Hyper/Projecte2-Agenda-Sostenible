@@ -33,7 +33,7 @@ class Events
         $results = [];
         foreach ($this->sql->query($query, PDO::FETCH_ASSOC) as $result) {
             $results[] = $result;
-        }
+        } 
         return $results;
     }
 

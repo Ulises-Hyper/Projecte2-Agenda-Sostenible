@@ -188,7 +188,7 @@
             <!-- Verifica si existen eventos -->
             <?php if (is_array($events) || is_object($events)): ?>
                 <?php foreach ($events as $event): ?>
-                    <div class="card mb-3">
+                    <div class="card mb-3"> 
                         <div class="card-body">
                             <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'administrator'): ?>
                                 <!-- Posicionamiento del dropdown en la esquina superior derecha -->

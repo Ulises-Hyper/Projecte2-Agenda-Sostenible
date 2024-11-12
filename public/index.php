@@ -96,7 +96,7 @@ if (!isset($r)) {
 // } elseif ($r == "eventos") {
 //   $response = ctrlEventos($request, $response, $container);
 } elseif ($r == "favoritos") {
-  $response = isLogged($request, $response, $container, "ctrlFavoritos");
+  $response = isLogged($request, $response, $container, "ctrlFavoritos"); 
 } elseif ($r == "crearevento") {
   $response = ctrlCrearEvento($request, $response, $container);
 } elseif ($r == "guardarevento") {
