@@ -29,12 +29,13 @@ class Events
 
     public function getAllEvents(){
 
-        $query = "SELECT event_id, event_title, event_description, event_location, date_start from events order by date_start desc limit 3;";
+        $query = "SELECT event_title, event_description, event_location, date_start from events;";
         $results = [];
         foreach ($this->sql->query($query, PDO::FETCH_ASSOC) as $result) {
             $results[] = $result;
-        } 
+        }
         return $results;
     }
 
+    
 }
