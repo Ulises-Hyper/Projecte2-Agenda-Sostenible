@@ -25,6 +25,7 @@ include "../src/controllers/ctrlDoLogout.php";
 include "../src/controllers/ctrlConsejos.php";
 include "../src/controllers/ctrlCrearEvento.php";
 include "../src/controllers/ctrlGuardarEvento.php";
+include "../src/controllers/ctrlEventList.php";
 
 // Archivos Middleware
 
@@ -92,14 +93,16 @@ if (!isset($r)) {
   $response = ctrlDoRegister($request, $response, $container);
 } elseif ($r == "profile") {
   $response = isLogged($request, $response, $container, "ctrlProfile");
-} elseif ($r == "eventos") {
-  $response = ctrlEventos($request, $response, $container);
+// } elseif ($r == "eventos") {
+//   $response = ctrlEventos($request, $response, $container);
 } elseif ($r == "favoritos") {
   $response = isLogged($request, $response, $container, "ctrlFavoritos");
 } elseif ($r == "crearevento") {
   $response = ctrlCrearEvento($request, $response, $container);
 } elseif ($r == "guardarevento") {
   $response = ctrlGuardarEvento($request, $response, $container);
+} elseif ($r == "eventos") {
+  $response = ctrlEventList($request, $response, $container);
 } elseif ($r == "json") {
   $response = ctrlJson($request, $response, $container);
 } else {

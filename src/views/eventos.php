@@ -113,15 +113,15 @@
                     <h1 class="fs-2 fw-bold">Eventos</h1>
                     <p class="text-muted">Descubre todas las actividades y eventos sostenibles en Figueres</p>
                 </div>
-                <?php if ($_SESSION['user']['role'] === 'administrator'): ?>
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'administrator'): ?>
                     <div class="ms-auto">
                         <a class="dropdown-item" href="index.php?r=crearevento"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B5733" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                                 <line x1="12" y1="5" x2="12" y2="19"></line>
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                             </svg></a>
                     </div>
-                <?php endif; ?> 
-            </div> 
+                <?php endif; ?>
+            </div>
 
 
             <!-- Time Filters -->
@@ -185,78 +185,79 @@
 
         <!-- Events List -->
         <div class="events-list">
-            <!-- Event Card -->
-            <div class="card mb-3">
-                <div class="card-body">
-                    <div class="d-flex gap-3 mb-3">
-                        <div
-                            class="date-box bg-light rounded d-flex flex-column align-items-center justify-content-center">
-                            <span class="fs-3 fw-bold text-custom-green">15</span>
-                            <span class="text-custom-green">NOV</span>
-                        </div>
-                        <div class="flex-grow-1">
-                            <h5 class="card-title">Taller de Reciclaje Creativo</h5>
-                            <p class="card-text text-muted small">Aprende a dar una segunda vida a materiales
-                                reciclables</p>
-                            <div class="d-flex gap-3 text-muted small">
-                                <div>
-                                    <i class="bi bi-clock me-1"></i>
-                                    <span>10:00</span>
+            <!-- Verifica si existen eventos -->
+            <?php if (is_array($events) || is_object($events)): ?>
+                <?php foreach ($events as $event): ?>
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'administrator'): ?>
+                                <!-- Posicionamiento del dropdown en la esquina superior derecha -->
+                                <div class="dropdown position-absolute top-0 end-0 mt-2 me-2">
+                                    <button class="btn btn-sm btn-transparent dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <!-- Opción Editar -->
+                                        <li><a class="dropdown-item" href="index.php?r=editarevento&id=<?php echo $event['event_id']; ?>">Editar</a></li>
+                                        <!-- Opción Eliminar -->
+                                        <li><a class="dropdown-item" href="index.php?r=eliminarevento&id=<?php echo $event['event_id']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este evento?');">Eliminar</a></li>
+                                    </ul>
                                 </div>
-                                <div>
-                                    <i class="bi bi-geo-alt me-1"></i>
-                                    <span>Centro Cívico</span>
+                            <?php endif; ?>
+
+                            <div class="d-flex gap-3 mb-3">
+                                <div class="date-box bg-light rounded d-flex flex-column align-items-center justify-content-center">
+                                    <span class="fs-3 fw-bold text-custom-green">
+                                        <?php
+                                        // Convierte la fecha a un formato legible que solo muestre el día
+                                        $date = isset($event['date_start']) ? strtotime($event['date_start']) : null;
+                                        echo $date ? date('d', $date) : 'Sin fecha';
+                                        ?>
+                                    </span>
+                                    <span class="text-custom-green">
+                                        <?php
+                                        // Convierte la fecha a un formato legible y muestra el mes en tres letras (ej. NOV)
+                                        $date = isset($event['date_start']) ? strtotime($event['date_start']) : null;
+                                        echo $date ? strtoupper(date('M', $date)) : 'Sin fecha';
+                                        ?>
+                                    </span>
                                 </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="card-title"><?php echo htmlspecialchars($event['event_title'] ?? 'Título no disponible'); ?></h5>
+                                    <p class="card-text text-muted small"><?php echo htmlspecialchars($event['event_description'] ?? 'Sin descripción'); ?></p>
+                                    <div class="d-flex gap-3 text-muted small">
+                                        <div>
+                                            <i class="bi bi-clock me-1"></i>
+                                            <span><?php echo htmlspecialchars($event['event_time'] ?? 'Sin hora'); ?></span>
+                                        </div>
+                                        <div>
+                                            <i class="bi bi-geo-alt me-1"></i>
+                                            <span><?php echo htmlspecialchars($event['event_location'] ?? 'Sin ubicación'); ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-custom-green fw-medium">Gratuito</span>
+                                <button class="btn btn-custom-green">Inscribirse</button>
                             </div>
                         </div>
                     </div>
-                    <hr>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-custom-green fw-medium">Gratuito</span>
-                        <button class="btn btn-custom-green">Inscribirse</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Repeated Event Cards -->
-            <div class="card mb-3">
-                <div class="card-body">
-                    <div class="d-flex gap-3 mb-3">
-                        <div
-                            class="date-box bg-light rounded d-flex flex-column align-items-center justify-content-center">
-                            <span class="fs-3 fw-bold text-custom-green">17</span>
-                            <span class="text-custom-green">NOV</span>
-                        </div>
-                        <div class="flex-grow-1">
-                            <h5 class="card-title">Charla sobre Energías Renovables</h5>
-                            <p class="card-text text-muted small">Descubre las últimas innovaciones en energía solar</p>
-                            <div class="d-flex gap-3 text-muted small">
-                                <div>
-                                    <i class="bi bi-clock me-1"></i>
-                                    <span>18:00</span>
-                                </div>
-                                <div>
-                                    <i class="bi bi-geo-alt me-1"></i>
-                                    <span>Biblioteca Municipal</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="text-custom-green fw-medium">Gratuito</span>
-                        <button class="btn btn-custom-green">Inscribirse</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Load More Button -->
-            <div class="text-center mt-4">
-                <button class="btn text-custom-green fw-medium">
-                    Cargar más eventos
-                </button>
-            </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No se encontraron eventos.</p>
+            <?php endif; ?>
         </div>
+
+
+        <!-- Load More Button -->
+        <div class="text-center mt-4">
+            <button class="btn text-custom-green fw-medium">
+                Cargar más eventos
+            </button>
+        </div>
+    </div>
     </div>
 
     <!-- Floating Filter Button -->
