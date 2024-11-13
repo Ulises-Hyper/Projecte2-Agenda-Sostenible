@@ -26,6 +26,11 @@ include "../src/controllers/ctrlConsejos.php";
 include "../src/controllers/ctrlCrearEvento.php";
 include "../src/controllers/ctrlGuardarEvento.php";
 include "../src/controllers/ctrlEventList.php";
+include "../src/controllers/ctrlCrearConsejo.php";
+include "../src/controllers/ctrlGuardarConsejo.php";
+include "../src/controllers/ctrlEliminarConsejo.php";
+include "../src/controllers/ctrlEditarConsejo.php";
+include "../src/controllers/ctrlGuardarEditarConsejo.php";
 
 // Archivos Middleware
 
