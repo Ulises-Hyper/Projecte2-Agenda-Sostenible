@@ -124,63 +124,61 @@
         <!-- Botón "Crear Consejo" solo para administradores -->
         <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'administrator'): ?>
             <div class="text-end mb-4">
-                <a href="index.php?r=crearConsejo" class="btn btn-success">
+                <a href="index.php?r=crearconsejo" class="btn btn-success">
                     <i class="fas fa-plus"></i> Crear Consejo
                 </a>
             </div>
         <?php endif; ?>
         <div class="row">
             <!-- Consejos de Sostenibilidad -->
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-success">1. Reduce el uso de plásticos</h5>
-                        <p class="card-text flex-grow-1">
-                            Lleva tu propia botella, bolsa y envases para evitar el uso de
-                            plásticos de un solo uso.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <?php if (!empty($tips)): ?>
+                <?php foreach ($tips as $tip): ?>
+                    <div class="col-md-6 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body d-flex flex-column">
+                                <!-- Título del Consejo -->
+                                <h5 class="card-title text-success"><?php echo htmlspecialchars($tip['title']); ?></h5>
 
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-success">2. Ahorra agua y energía</h5>
-                        <p class="card-text flex-grow-1">
-                            Cierra el grifo cuando no lo necesites y apaga las luces para
-                            reducir el consumo de energía.
-                        </p>
-                    </div>
-                </div>
-            </div>
+                                <!-- Descripción Breve -->
+                                <p class="card-text text-muted"><?php echo htmlspecialchars($tip['brief_description']); ?>.</p>
 
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-success">3. Compra productos locales y de temporada</h5>
-                        <p class="card-text flex-grow-1">
-                            Elige productos locales y de temporada para reducir el impacto
-                            ambiental del transporte de alimentos.
-                        </p>
-                    </div>
-                </div>
-            </div>
+                                <!-- Texto Explicativo -->
+                                <p class="card-text flex-grow-1">
+                                    <?php echo nl2br(htmlspecialchars($tip['explanatory_text'])); ?>
+                                </p>
 
-            <div class="col-md-6 mb-4">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-success">4. Practica la economía circular</h5>
-                        <p class="card-text flex-grow-1">
-                            Compra, reutiliza y recicla productos para reducir residuos y
-                            aprovechar los recursos.
-                        </p>
+                                <!-- Hashtags -->
+                                <div class="mt-3">
+                                    <?php
+                                    // Dividir el campo de hashtags en un array usando la coma como separador
+                                    $hashtags = explode(',', $tip['hashtags']);
+
+                                    // Recorrer cada hashtag y mostrarlo como una etiqueta
+                                    foreach ($hashtags as $hashtag):
+                                    ?>
+                                        <span class="badge bg-primary"><?= htmlspecialchars(trim($hashtag)); ?></span>
+                                    <?php endforeach; ?>
+                                </div>
+
+                                <!-- Botones de Editar y Eliminar -->
+                                <div class="mt-3 d-flex justify-content-end">
+                                    <!-- Botón Editar -->
+                                    <a href="index.php?r=editarconsejo&id=<?= $tip['id'] ?>" class="btn btn-warning btn-sm me-2">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </a>
+
+                                    <!-- Botón Eliminar -->
+                                    <a href="index.php?r=eliminarconsejo&id=<?= $tip['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este consejo?');">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </main>
-
 
     <!-- Footer -->
     <footer class="bg-custom-green-darkest text-light footer">

@@ -26,6 +26,11 @@ include "../src/controllers/ctrlConsejos.php";
 include "../src/controllers/ctrlCrearEvento.php";
 include "../src/controllers/ctrlGuardarEvento.php";
 include "../src/controllers/ctrlEventList.php";
+include "../src/controllers/ctrlCrearConsejo.php";
+include "../src/controllers/ctrlGuardarConsejo.php";
+include "../src/controllers/ctrlEliminarConsejo.php";
+include "../src/controllers/ctrlEditarConsejo.php";
+include "../src/controllers/ctrlGuardarEditarConsejo.php";
 
 // Archivos Middleware
 
@@ -50,6 +55,7 @@ $container = new ProjectContainer($config);
 
 $sql = new Db($config);
 $users = new Users($sql->get());
+$tips = new Events($sql->get());
 
 /* 
   * Aquesta és la part que fa que funcioni el Front Controller.
@@ -63,7 +69,17 @@ if (isset($_REQUEST["r"])) {
 
 if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
-} elseif($r == "consejos"){
+}elseif($r == "guardareditarconsejo"){
+  $response = ctrlGuardarEditarConsejo($request, $response, $container);
+}elseif($r == "editarconsejo"){
+  $response = ctrlEditarConsejo($request, $response, $container);
+}elseif($r == "eliminarconsejo"){
+  $response = ctrlConsejosEliminar($tips);
+}elseif($r == "guardarconsejo"){
+  $response = ctrlGuardarConsejo($request, $response, $container);
+}elseif($r == "crearconsejo"){
+  $reponse = ctrlCrearConsejo($request, $response, $container);
+}elseif($r == "consejos"){
   $response = ctrlConsejos($request, $response, $container);
 } elseif($r == "dologout"){
   $response = ctrlDoLogout($request, $response, $container);
