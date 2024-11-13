@@ -7,7 +7,7 @@ function ctrlEventDelete($events){
         
         header(header: "Location: index.php?r=eventos&delete=$id");
         exit;
-    } else {
+    } else { 
         header("Location: index.php?r=event&error=invalid_id");
         exit;
     }

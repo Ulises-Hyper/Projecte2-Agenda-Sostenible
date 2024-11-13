@@ -39,7 +39,7 @@ class Events
 
     public function delete($id)
     {
-        $query = "DELETE FROM events WHERE event_id = :event_id";
+        $query = "DELETE FROM events WHERE event_id = :event_id"; 
         $stm = $this->sql->prepare($query);
         $stm->execute([":event_id" => $id]);  // El parámetro debe coincidir con el de la consulta
 
