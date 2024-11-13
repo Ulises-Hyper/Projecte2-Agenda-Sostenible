@@ -26,6 +26,7 @@ include "../src/controllers/ctrlConsejos.php";
 include "../src/controllers/ctrlCrearEvento.php";
 include "../src/controllers/ctrlGuardarEvento.php";
 include "../src/controllers/ctrlEventList.php";
+include "../src/controllers/ctrlEventDelete.php";
 
 // Archivos Middleware
 
@@ -50,6 +51,7 @@ $container = new ProjectContainer($config);
 
 $sql = new Db($config);
 $users = new Users($sql->get());
+$tips = new Events($sql->get());
 
 /* 
   * Aquesta és la part que fa que funcioni el Front Controller.
@@ -103,6 +105,8 @@ if (!isset($r)) {
   $response = ctrlGuardarEvento($request, $response, $container);
 } elseif ($r == "eventos") {
   $response = ctrlEventList($request, $response, $container);
+} elseif ($r == "deleteevent") {
+  ctrlEventDelete($tips);
 } elseif ($r == "json") {
   $response = ctrlJson($request, $response, $container);
 } else {

@@ -29,12 +29,25 @@ class Events
 
     public function getAllEvents(){
 
-        $query = "SELECT event_title, event_description, event_location, date_start from events;";
+        $query = "SELECT event_id, event_title, event_description, event_location, date_start from events order by date_start desc limit 3;";
         $results = [];
         foreach ($this->sql->query($query, PDO::FETCH_ASSOC) as $result) {
             $results[] = $result;
         }
         return $results;
+    }
+
+    public function delete($id)
+    {
+        $query = "DELETE FROM events WHERE event_id = :event_id";
+        $stm = $this->sql->prepare($query);
+        $stm->execute([":event_id" => $id]);  // El parámetro debe coincidir con el de la consulta
+
+        // Manejo de errores
+        if ($stm->errorCode() !== '00000') {
+            $err = $stm->errorInfo();
+            die("Error al eliminar: {$err[0]} - {$err[1]}\n{$err[2]}");
+        }
     }
 
     
