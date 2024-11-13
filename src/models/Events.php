@@ -9,12 +9,13 @@ class Events
      *
      * @param PDO $sql Database connection object (PDO)
      */
-    public function __construct(PDO $sql) 
+    public function __construct(PDO $sql)
     {
         $this->sql = $sql;
     }
 
-    public function addEvent($event_title, $event_description, $event_location, $event_type, $event_comment, $date_start, $date_end){
+    public function addEvent($event_title, $event_description, $event_location, $event_type, $event_comment, $date_start, $date_end)
+    {
 
         $event_comment_value = ($event_comment === 'on') ? 1 : 0;
 
@@ -27,7 +28,8 @@ class Events
         return $id;
     }
 
-    public function getAllEvents(){
+    public function getAllEvents()
+    {
 
         $query = "SELECT event_id, event_title, event_description, event_location, date_start from events order by date_start desc limit 3;";
         $results = [];
@@ -50,5 +52,15 @@ class Events
         }
     }
 
-    
+    public function getEditEvent($id)
+    {
+        $query = "SELECT event_id, event_title, event_description, event_location, date_start from events;";
+        $stm = $this->sql->prepare($query);
+        $stm->execute([":user_id" => $id]);
+        $result = $stm->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public function update() {}
 }

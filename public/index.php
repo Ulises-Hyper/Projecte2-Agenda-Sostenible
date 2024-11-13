@@ -27,6 +27,9 @@ include "../src/controllers/ctrlCrearEvento.php";
 include "../src/controllers/ctrlGuardarEvento.php";
 include "../src/controllers/ctrlEventList.php";
 include "../src/controllers/ctrlEventDelete.php";
+include "../src/controllers/ctrlEventUpdate.php";
+include "../src/controllers/ctrlEventView.php";
+include "../src/controllers/ctrlEventUpdateEdit.php";
 
 // Archivos Middleware
 
@@ -107,6 +110,12 @@ if (!isset($r)) {
   $response = ctrlEventList($request, $response, $container);
 } elseif ($r == "deleteevent") {
   ctrlEventDelete($tips);
+} elseif ($r == "eventupdate") {
+  $response = ctrlEventUpdate($request, $response, $container);
+} elseif ($r == "eventedit") {
+  $response = ctrlEventView($request, $response, $container);
+} elseif ($r == "eventos") {
+  $response = ctrlEventUpdateEdit($request, $response, $container);
 } elseif ($r == "json") {
   $response = ctrlJson($request, $response, $container);
 } else {

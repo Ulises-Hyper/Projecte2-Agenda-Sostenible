@@ -198,7 +198,7 @@
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <!-- Opción Editar -->
-                                        <li><a class="dropdown-item" href="index.php?r=editarevento&id=<?php echo $event['event_id']; ?>">Editar</a></li>
+                                        <li><a class="dropdown-item" href="index.php?r=eventedit&id=<?php echo $event['event_id']; ?>">Editar</a></li>
                                         <!-- Opción Eliminar -->
                                         <li><a class="dropdown-item" href="index.php?r=deleteevent&id=<?php echo $event['event_id']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar este evento?');">Eliminar</a></li>
                                     </ul>
