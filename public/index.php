@@ -26,11 +26,6 @@ include "../src/controllers/ctrlConsejos.php";
 include "../src/controllers/ctrlCrearEvento.php";
 include "../src/controllers/ctrlGuardarEvento.php";
 include "../src/controllers/ctrlEventList.php";
-include "../src/controllers/ctrlCrearConsejo.php";
-include "../src/controllers/ctrlGuardarConsejo.php";
-include "../src/controllers/ctrlEliminarConsejo.php";
-include "../src/controllers/ctrlEditarConsejo.php";
-include "../src/controllers/ctrlGuardarEditarConsejo.php";
 
 // Archivos Middleware
 
@@ -111,14 +106,16 @@ if (!isset($r)) {
   $response = isLogged($request, $response, $container, "ctrlProfile");
 // } elseif ($r == "eventos") {
 //   $response = ctrlEventos($request, $response, $container);
-} elseif ($r == "favoritos") {
+} elseif ($r == "favoritos") { 
   $response = isLogged($request, $response, $container, "ctrlFavoritos"); 
 } elseif ($r == "crearevento") {
-  $response = ctrlCrearEvento($request, $response, $container);
+  $response = ctrlCrearEvento($request, $response, $container); 
 } elseif ($r == "guardarevento") {
   $response = ctrlGuardarEvento($request, $response, $container);
 } elseif ($r == "eventos") {
   $response = ctrlEventList($request, $response, $container);
+} elseif ($r == "deleteevent") {
+  ctrlEventDelete($tips);
 } elseif ($r == "json") {
   $response = ctrlJson($request, $response, $container);
 } else {
