@@ -8,7 +8,6 @@ include "../src/config.php";
 include "../src/controllers/ctrlIndex.php";
 include "../src/controllers/ctrlJson.php";
 include '../src/controllers/ctrlDashboard.php';
-include '../src/controllers/ctrlEvento.php';
 include '../src/controllers/ctrlEventos.php';
 include '../src/controllers/ctrlFavoritos.php';
 include '../src/controllers/ctrlLogin.php';
@@ -36,6 +35,8 @@ include "../src/controllers/ctrlEliminarConsejo.php";
 include "../src/controllers/ctrlEditarConsejo.php";
 include "../src/controllers/ctrlGuardarEditarConsejo.php";
 include "../src/controllers/ctrlSearch.php";
+include "../src/controllers/ctrlEventoList.php";
+
 
 // Archivos Middleware
 
@@ -74,7 +75,9 @@ if (isset($_REQUEST["r"])) {
 
 if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
-} elseif($r == "search"){
+} elseif ($r == "evento") {
+  $response = ctrlEventoList($request, $response, $container);
+}elseif($r == "search"){
   $response = ctrlSearch($request, $response, $container);
 } elseif($r == "guardareditarconsejo"){
   $response = ctrlGuardarEditarConsejo($request, $response, $container);
@@ -106,8 +109,6 @@ if (!isset($r)) {
   $response = isAdmin($request, $response, $container, "ctrlDashboardList");
 }elseif ($r == "dashboardview") {
   $response = isAdmin($request, $response, $container, "ctrlDashboard");
-} elseif ($r == "evento") {
-  $response = ctrlEvento($request, $response, $container);
 } elseif ($r == "login") {
   $response = ctrlLogin($request, $response, $container);
 } elseif ($r == "register") {

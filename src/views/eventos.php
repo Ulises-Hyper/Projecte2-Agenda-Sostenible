@@ -197,6 +197,7 @@
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li><a class="dropdown-item" href="index.php?r=evento&id=<?= $event['event_id'] ?>">Ver</a></li>
                                         <!-- Opción Editar -->
                                         <li><a class="dropdown-item" href="index.php?r=eventupdateedit&id=<?= $event['event_id'] ?>">Editar</a></li>
                                         <!-- Opción Eliminar -->
@@ -228,7 +229,7 @@
                                     <div class="d-flex gap-3 text-muted small">
                                         <div>
                                             <i class="bi bi-clock me-1"></i>
-                                            <span><?php echo htmlspecialchars($event['event_time'] ?? 'Sin hora'); ?></span>
+                                            <span><?php echo htmlspecialchars($event['event_hour'] ?? 'Sin hora'); ?></span>
                                         </div>
                                         <div>
                                             <i class="bi bi-geo-alt me-1"></i>

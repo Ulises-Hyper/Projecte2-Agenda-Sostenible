@@ -116,8 +116,8 @@
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
 
-        <div class="carousel-date">
-            15 NOV
+        <div class="carousel-date text-md">
+            <?php echo date('d M', strtotime($events['date_start'])); ?>
         </div>
 
         <!-- Image Container -->
@@ -153,8 +153,7 @@
             </button>
         </div>
         <div class="mt-3">
-            <h3>Taller de Reciclaje Creativo</h3>
-            <p class="text-grey">Aprende a dar una segunda vida a materiales reciclables</p>
+            <h3><?= htmlspecialchars($events['event_title']); ?></h3>
         </div>
     </div>
 
@@ -171,7 +170,7 @@
                             <span class="fw-medium">Hora</span>
                         </div>
                         <div>
-                            <span>10:00 - 12:00</span>
+                            <span><?= htmlspecialchars($events['event_hour'] ?? 'No hay información'); ?></span>
                         </div>
                     </div>
                 </div>
@@ -186,7 +185,7 @@
                             <span class="fw-medium">Fecha</span>
                         </div>
                         <div>
-                            <span>15 de Noviembre</span>
+                            <span><?php echo date('d/m/Y', strtotime($events['date_start'])); ?></span>
                         </div>
                     </div>
                 </div>
@@ -216,7 +215,7 @@
                             <span class="fw-medium">Ubicación</span>
                         </div>
                         <div>
-                            <span>Centro Cívico</span>
+                            <span><?= htmlspecialchars($events['event_location']); ?></span>
                         </div>
                     </div>
                 </div>
@@ -229,29 +228,8 @@
             <div class="bg-custom-white rounded p-4 mb-4">
                 <h2>Descripción</h2>
                 <p>
-                    Únete a nuestro taller práctico donde aprenderás técnicas creativas para reutilizar
-                    materiales reciclables. Durante la sesión, exploraremos diferentes métodos para transformar objetos cotidianos en piezas útiles y decorativas.
+                    <?= htmlspecialchars($events['event_description']); ?>
                 </p>
-                <p>
-                    ¿Qué aprenderás?
-                </p>
-                <ul>
-                    <li>Técnicas básicas de reciclaje creativo</li>
-                    <li>Identificación de materiales reutilizables</li>
-                    <li>Herramientas necesarias para cada proyecto</li>
-                    <li>Tips para encontrar inspiración</li>
-                </ul>
-            </div>
-
-            <!-- Materiales necesarios -->
-            <div class="bg-custom-white rounded p-4 mb-4">
-                <h2>Materiales necesarios</h2>
-                <ul>
-                    <li>Tijeras</li>
-                    <li>Pegamento</li>
-                    <li>Materiales reciclados (botellas, cartón, etc.)</li>
-                    <li>Pinturas (opcional)</li>
-                </ul>
             </div>
 
             <!-- Organizador -->
