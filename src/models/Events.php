@@ -52,6 +52,43 @@ class Events
         }
     }
 
+    public function getEditEvent($id)
+    {
+        $query = "SELECT event_id, event_title, event_type, event_description, event_location, date_start, date_end from events where event_id = :event_id;";
+        $stm = $this->sql->prepare($query);
+        $stm->execute([":event_id" => $id]);
+        $result = $stm->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public function update($id, $data)
+    {
+        $query = "UPDATE events SET 
+        event_title = :event_title, 
+        event_type = :event_type, 
+        event_description = :event_description, 
+        event_location = :event_location,
+        date_start = :date_start,
+        date_end = :date_end";
+
+        $query .= " WHERE user_id = :user_id";
+        $stm = $this->sql->prepare($query);
+
+        $params = [
+            ':event_title' => $data['event_title'],
+            ':event_type' => $data['event_type'],
+            ':event_description' => $data['event_description'],
+            ':event_location' => $data['event_location'],
+            ':date_start' => $data['date_start'],
+            ':date_end' => $data['date_end'],
+            ':event_id' => $id
+        ];
+
+        var_dump($params);
+
+        $stm->execute($params);
+    }
     public function addTips($title, $brief_description, $explanatory_text, $hashtags)
     {
         $query = "INSERT INTO tips (title, brief_description, explanatory_text, hashtags) VALUES (:title, :brief_description, :explanatory_text, :hashtags);";

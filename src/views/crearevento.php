@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +14,9 @@
     <link rel="stylesheet" href="/src/css/style.css">
     <script src="/src/js/main.js"></script>
 </head>
+
 <body class="bg-custom-green-lightest">
-    <div class="container d-flex justify-content-center align-items-center vh-100">  
+    <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="col-md-6 mt-3 mb-3">
             <h2 class="fs-3 fw-bold text-custom-green-darkest text-center">Añadir Evento</h2>
             <form action="index.php?r=guardarevento" method="POST" class="bg-custom-white p-4 rounded shadow">
@@ -64,12 +66,15 @@
                 <div class="mb-3">
                     <label for="hora" class="form-label">Hora</label>
                     <input type="time" class="form-control" id="hora" name="" required>
-                </div>
-                <button type="submit" class="btn btn-custom-green w-100">Añadir Evento</button>
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="index.php/?r=eventos" class="btn btn-custom-green-light">Cancelar</a>
+                        <button type="submit" class="btn btn-custom-green">Guardar Cambios</button>
+                    </div>
             </form>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
