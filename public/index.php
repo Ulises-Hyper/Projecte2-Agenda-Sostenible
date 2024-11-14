@@ -35,6 +35,7 @@ include "../src/controllers/ctrlGuardarConsejo.php";
 include "../src/controllers/ctrlEliminarConsejo.php";
 include "../src/controllers/ctrlEditarConsejo.php";
 include "../src/controllers/ctrlGuardarEditarConsejo.php";
+include "../src/controllers/ctrlSearch.php";
 
 // Archivos Middleware
 
@@ -73,7 +74,9 @@ if (isset($_REQUEST["r"])) {
 
 if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
-}elseif($r == "guardareditarconsejo"){
+} elseif($r == "search"){
+  $response = ctrlSearch($request, $response, $container);
+} elseif($r == "guardareditarconsejo"){
   $response = ctrlGuardarEditarConsejo($request, $response, $container);
 }elseif($r == "editarconsejo"){
   $response = ctrlEditarConsejo($request, $response, $container);

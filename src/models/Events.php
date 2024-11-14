@@ -156,4 +156,23 @@ class Events
         // Retornar el resultado de la ejecución (true si la actualización fue exitosa, false si no lo fue)
         return $result;
     }
+
+    public function getByTitle($title) {
+        // Agregar los comodines directamente en el valor del parámetro
+        $query = "SELECT id, title, brief_description, explanatory_text, hashtags 
+                  FROM tips 
+                  WHERE title LIKE :title";
+        
+        // Preparar la consulta
+        $stm = $this->sql->prepare($query);
+        
+        // Ejecutar la consulta con los comodines en el valor del parámetro
+        $stm->execute([':title' => '%' . $title . '%']);
+        
+        // Obtener todos los resultados
+        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Retornar los resultados o null si no hay coincidencias
+        return $result ? $result : null;
+    }
 }
