@@ -114,7 +114,7 @@ if (!isset($r)) {
   $response = ctrlEventUpdate($request, $response, $container);
 } elseif ($r == "eventedit") {
   $response = ctrlEventView($request, $response, $container);
-} elseif ($r == "eventos") {
+} elseif ($r == "eventupdateedit") {
   $response = ctrlEventUpdateEdit($request, $response, $container);
 } elseif ($r == "json") {
   $response = ctrlJson($request, $response, $container);

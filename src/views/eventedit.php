@@ -9,23 +9,23 @@
 </head>
 <body class="bg-custom-green-lightest">
 
-  <div class="container d-flex justify-content-center align-items-center vh-100">  
+  <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="col-md-6 mt-3 mb-3">
       <h2 class="fs-3 fw-bold text-custom-green-darkest text-center">Editar Evento</h2>
       <form action="index.php?r=eventupdate" method="POST" class="bg-custom-white p-4 rounded shadow">
         <div class="mb-3 row">
           <div class="col">
             <label for="titulo" class="form-label">Título del Evento</label>
-            <input type="text" class="form-control" id="titulo" name="event_title" value="<?= htmlspecialchars($event['event_title']) ?>" required>
+            <input type="text" class="form-control" id="titulo" name="event_title" value="<?= htmlspecialchars($events['event_title']) ?>" required>
           </div>
           <div class="col">
             <label for="tipo" class="form-label">Tipo</label>
-            <input type="text" class="form-control" id="tipo" name="event_type" value="<?= htmlspecialchars($event['event_type']) ?>" required>
+            <input type="text" class="form-control" id="tipo" name="event_type" value="<?= htmlspecialchars($events['event_type']) ?>" required>
           </div>
         </div>
         <div class="mb-3">
           <label for="descripcion" class="form-label">Descripción</label>
-          <textarea class="form-control" id="descripcion" name="event_description" rows="3" required></textarea>
+          <textarea class="form-control" id="descripcion" name="event_description" rows="3"required><?= htmlspecialchars($events['event_description']) ?> </textarea>
         </div>
         <div class="mb-3 row">
           <div class="col">
@@ -44,16 +44,16 @@
         </div>
         <div class="mb-3">
           <label for="ubicacion" class="form-label">Ubicación</label>
-          <input type="text" class="form-control" id="ubicacion" name="event_location" required>
+          <input type="text" class="form-control" id="ubicacion" name="event_location" value="<?= htmlspecialchars($events['event_location']) ?>" required>
         </div>
         <div class="mb-3 row">
           <div class="col">
             <label for="fecha_inicio" class="form-label">Fecha Inicio</label>
-            <input type="date" class="form-control" id="fecha_inicio" name="date_start" required>
+            <input type="date" class="form-control" id="fecha_inicio" name="date_start" value="<?= date('Y-m-d', strtotime($events['date_start'])) ?>" required>
           </div>
           <div class="col">
             <label for="fecha_final" class="form-label">Fecha Final</label>
-            <input type="date" class="form-control" id="fecha_final" name="date_end" required>
+            <input type="date" class="form-control" id="fecha_final" name="date_end" value="<?= date('Y-m-d', strtotime($events['date_end'])) ?>" required>
           </div>
         </div>
         <div class="mb-3">
