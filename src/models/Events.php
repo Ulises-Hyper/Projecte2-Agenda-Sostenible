@@ -41,7 +41,7 @@ class Events
 
     public function delete($id)
     {
-        $query = "DELETE FROM events WHERE event_id = :event_id"; 
+        $query = "DELETE FROM events WHERE event_id = :event_id";
         $stm = $this->sql->prepare($query);
         $stm->execute([":event_id" => $id]);  // El parámetro debe coincidir con el de la consulta
 
@@ -62,33 +62,38 @@ class Events
         return $result;
     }
 
-    public function update($id, $data)
+    public function update($id, $event_title, $event_type, $event_description, $event_location, $date_start, $date_end)
     {
+        // Asegurarse de que todos los parámetros estén presentes en la consulta
         $query = "UPDATE events SET 
-        event_title = :event_title, 
-        event_type = :event_type, 
-        event_description = :event_description, 
-        event_location = :event_location,
-        date_start = :date_start,
-        date_end = :date_end";
-
-        $query .= " WHERE user_id = :user_id";
+            event_title = :event_title, 
+            event_type = :event_type, 
+            event_description = :event_description, 
+            event_location = :event_location,
+            date_start = :date_start,
+            date_end = :date_end
+            WHERE event_id = :event_id";  // Es importante que este marcador también esté en el array
+    
+        // Preparar la consulta
         $stm = $this->sql->prepare($query);
-
+    
+        // Crear el array de parámetros con todos los valores necesarios
         $params = [
-            ':event_title' => $data['event_title'],
-            ':event_type' => $data['event_type'],
-            ':event_description' => $data['event_description'],
-            ':event_location' => $data['event_location'],
-            ':date_start' => $data['date_start'],
-            ':date_end' => $data['date_end'],
-            ':event_id' => $id
+            ':event_title' => $event_title,
+            ':event_type' => $event_type,
+            ':event_description' => $event_description,
+            ':event_location' => $event_location,
+            ':date_start' => $date_start,
+            ':date_end' => $date_end,
+            ':event_id' => $id // Asegúrate de pasar el ID aquí
         ];
-
-        var_dump($params);
-
-        $stm->execute($params);
+    
+        // Ejecutar la consulta con los parámetros correctos
+        $result = $stm->execute($params);
+    
+        return $result;
     }
+
     public function addTips($title, $brief_description, $explanatory_text, $hashtags)
     {
         $query = "INSERT INTO tips (title, brief_description, explanatory_text, hashtags) VALUES (:title, :brief_description, :explanatory_text, :hashtags);";
@@ -113,7 +118,8 @@ class Events
         $stm->execute(params: [":id" => $id]);
     }
 
-    public function getTips($id){
+    public function getTips($id)
+    {
         $query = "SELECT id, title, brief_description, explanatory_text, hashtags 
                   FROM tips
                   WHERE id = :id";

@@ -13,6 +13,7 @@
     <div class="col-md-6 mt-3 mb-3">
       <h2 class="fs-3 fw-bold text-custom-green-darkest text-center">Editar Evento</h2>
       <form action="index.php?r=eventupdate" method="POST" class="bg-custom-white p-4 rounded shadow">
+        <input type="text" hidden name="event_id" value="<?= htmlspecialchars($events['event_id']); ?>">
         <div class="mb-3 row">
           <div class="col">
             <label for="titulo" class="form-label">Título del Evento</label>
