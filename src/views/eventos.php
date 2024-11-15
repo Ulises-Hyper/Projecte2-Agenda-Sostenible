@@ -10,6 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/src/js/main.js"></script>
 </head>
 
 <body class="bg-custom-green-light">
@@ -23,12 +27,13 @@
                     <path d="M12 16C12 16 14 18 16 18C18 18 20 16 20 16C20 19 18 21 16 21C14 21 12 19 12 16Z" fill="#B8D5A7" />
                 </svg>
             </a>
-            <div class="input-group w-50">
-                <input type="text" class="form-control" placeholder="Buscar eventos, consejos, anuncios..." />
-                <button class="btn btn-outline-secondary text-gray-600">
+            <form action="index.php?r=search" method="GET" class="input-group w-50">
+                <input type="hidden" name="r" value="search" />
+                <input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Buscar eventos, consejos, anuncios..." />
+                <button type="submit" id="searchButton" class="btn btn-outline-secondary text-gray-600">
                     <i class="fas fa-search"></i>
                 </button>
-            </div>
+            </form>
             <div class="d-flex align-items-center">
                 <button class="btn text-white position-relative me-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
@@ -188,7 +193,7 @@
             <!-- Verifica si existen eventos -->
             <?php if (is_array($events) || is_object($events)): ?>
                 <?php foreach ($events as $event): ?>
-                    <div class="card mb-3"> 
+                    <div class="card mb-3">
                         <div class="card-body">
                             <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'administrator'): ?>
                                 <!-- Posicionamiento del dropdown en la esquina superior derecha -->

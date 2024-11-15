@@ -12,6 +12,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/src/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/src/js/main.js"></script>
 </head>
 
@@ -26,12 +29,13 @@
                     <path d="M12 16C12 16 14 18 16 18C18 18 20 16 20 16C20 19 18 21 16 21C14 21 12 19 12 16Z" fill="#B8D5A7" />
                 </svg>
             </a>
-            <div class="input-group w-50">
-                <input type="text" class="form-control" placeholder="Buscar eventos, consejos, anuncios..." />
-                <button class="btn btn-outline-secondary text-gray-600">
+            <form action="index.php?r=search" method="GET" class="input-group w-50">
+                <input type="hidden" name="r" value="search" />
+                <input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Buscar eventos, consejos, anuncios..." />
+                <button type="submit" id="searchButton" class="btn btn-outline-secondary text-gray-600">
                     <i class="fas fa-search"></i>
                 </button>
-            </div>
+            </form>
             <div class="d-flex align-items-center">
                 <button class="btn text-white position-relative me-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">

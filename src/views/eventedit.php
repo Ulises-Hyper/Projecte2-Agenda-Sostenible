@@ -59,7 +59,7 @@
         </div>
         <div class="mb-3">
           <label for="hora" class="form-label">Hora</label>
-          <input type="time" class="form-control" id="hora" name="event_time" required>
+          <input type="time" class="form-control" id="hora" name="event_time">
         </div>
         <div class="d-flex justify-content-between mt-4">
           <a href="index.php/?r=eventos" class="btn btn-custom-green-light">Cancelar</a>

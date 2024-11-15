@@ -14,7 +14,7 @@
     <script src="/src/js/main.js"></script>
 </head>
 
-<body>
+<body class="overflow-hidden">
 
     <!-- Barra superior con buscador -->
     <div class="bg-custom-green-darkest py-2">
@@ -120,39 +120,49 @@
         <?php } ?>
     </div> -->
 
-    <div class="container mt-4">
-        <?php foreach ($searchs as $search) { ?>
+    <?php if (!empty($searchs)): ?>
 
-            <div class="card shadow-sm h-100 mb-4">
-                <div class="card-body d-flex flex-column">
-                    <!-- Título del Consejo -->
-                    <h5 class="card-title text-success"><?php echo htmlspecialchars($search['title']); ?></h5>
+        <div class="container mt-4">
+            <?php foreach ($searchs as $search) { ?>
 
-                    <!-- Descripción Breve -->
-                    <p class="card-text text-muted"><?php echo htmlspecialchars($search['brief_description']); ?>.</p>
+                <div class="card shadow-sm h-100 mb-4">
+                    <div class="card-body d-flex flex-column">
+                        <!-- Título del Consejo -->
+                        <h5 class="card-title text-success"><?php echo htmlspecialchars($search['title']); ?></h5>
 
-                    <!-- Texto Explicativo -->
-                    <p class="card-text flex-grow-1">
-                        <?php echo nl2br(htmlspecialchars($search['explanatory_text'])); ?>
-                    </p>
+                        <!-- Descripción Breve -->
+                        <p class="card-text text-muted"><?php echo htmlspecialchars($search['brief_description']); ?>.</p>
 
-                    <!-- Hashtags -->
-                    <div class="mt-3">
-                        <?php
-                        // Dividir el campo de hashtags en un array usando la coma como separador
-                        $hashtags = explode(',', $search['hashtags']);
+                        <!-- Texto Explicativo -->
+                        <p class="card-text flex-grow-1">
+                            <?php echo nl2br(htmlspecialchars($search['explanatory_text'])); ?>
+                        </p>
 
-                        // Recorrer cada hashtag y mostrarlo como una etiqueta
-                        foreach ($hashtags as $hashtag):
-                        ?>
-                            <span class="badge bg-primary"><?= htmlspecialchars(trim($hashtag)); ?></span>
-                        <?php endforeach; ?>
+                        <!-- Hashtags -->
+                        <div class="mt-3">
+                            <?php
+                            // Dividir el campo de hashtags en un array usando la coma como separador
+                            $hashtags = explode(',', $search['hashtags']);
+
+                            // Recorrer cada hashtag y mostrarlo como una etiqueta
+                            foreach ($hashtags as $hashtag):
+                            ?>
+                                <span class="badge bg-primary"><?= htmlspecialchars(trim($hashtag)); ?></span>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
+            <?php } ?>
+        </div>
+    <?php else: ?>
+        <div class="container mt-4">
+            <div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
+                <div class="text-center">
+                    <h1>No hay resultados para tu búsqueda</h1>
+                </div>
             </div>
-        <?php } ?>
-    </div>
-
+        </div>
+    <?php endif; ?>
 </body>
 
 </html>
