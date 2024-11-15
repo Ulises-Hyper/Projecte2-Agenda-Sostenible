@@ -4,3 +4,4 @@ estructura
 docker-compose.yml
 Build
 .dockerignore
+*.odt
