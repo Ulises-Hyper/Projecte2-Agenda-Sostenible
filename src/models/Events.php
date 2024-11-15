@@ -41,7 +41,7 @@ class Events
 
     public function delete($id)
     {
-        $query = "DELETE FROM events WHERE event_id = :event_id"; 
+        $query = "DELETE FROM events WHERE event_id = :event_id";
         $stm = $this->sql->prepare($query);
         $stm->execute([":event_id" => $id]);  // El parámetro debe coincidir con el de la consulta
 
@@ -50,6 +50,48 @@ class Events
             $err = $stm->errorInfo();
             die("Error al eliminar: {$err[0]} - {$err[1]}\n{$err[2]}");
         }
+    }
+
+    public function getEditEvent($id)
+    {
+        $query = "SELECT event_id, event_title, event_type, event_description, event_location, date_start, date_end from events where event_id = :event_id;";
+        $stm = $this->sql->prepare($query);
+        $stm->execute([":event_id" => $id]);
+        $result = $stm->fetch(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public function update($id, $event_title, $event_type, $event_description, $event_location, $date_start, $date_end)
+    {
+        // Asegurarse de que todos los parámetros estén presentes en la consulta
+        $query = "UPDATE events SET 
+            event_title = :event_title, 
+            event_type = :event_type, 
+            event_description = :event_description, 
+            event_location = :event_location,
+            date_start = :date_start,
+            date_end = :date_end
+            WHERE event_id = :event_id";  // Es importante que este marcador también esté en el array
+    
+        // Preparar la consulta
+        $stm = $this->sql->prepare($query);
+    
+        // Crear el array de parámetros con todos los valores necesarios
+        $params = [
+            ':event_title' => $event_title,
+            ':event_type' => $event_type,
+            ':event_description' => $event_description,
+            ':event_location' => $event_location,
+            ':date_start' => $date_start,
+            ':date_end' => $date_end,
+            ':event_id' => $id // Asegúrate de pasar el ID aquí
+        ];
+    
+        // Ejecutar la consulta con los parámetros correctos
+        $result = $stm->execute($params);
+    
+        return $result;
     }
 
     public function addTips($title, $brief_description, $explanatory_text, $hashtags)
@@ -76,7 +118,8 @@ class Events
         $stm->execute(params: [":id" => $id]);
     }
 
-    public function getTips($id){
+    public function getTips($id)
+    {
         $query = "SELECT id, title, brief_description, explanatory_text, hashtags 
                   FROM tips
                   WHERE id = :id";
@@ -112,5 +155,24 @@ class Events
 
         // Retornar el resultado de la ejecución (true si la actualización fue exitosa, false si no lo fue)
         return $result;
+    }
+
+    public function getByTitle($title) {
+        // Agregar los comodines directamente en el valor del parámetro
+        $query = "SELECT id, title, brief_description, explanatory_text, hashtags 
+                  FROM tips 
+                  WHERE title LIKE :title";
+        
+        // Preparar la consulta
+        $stm = $this->sql->prepare($query);
+        
+        // Ejecutar la consulta con los comodines en el valor del parámetro
+        $stm->execute([':title' => '%' . $title . '%']);
+        
+        // Obtener todos los resultados
+        $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Retornar los resultados o null si no hay coincidencias
+        return $result ? $result : null;
     }
 }

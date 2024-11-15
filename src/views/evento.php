@@ -12,6 +12,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/src/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/src/js/main.js"></script>
 </head>
 
@@ -26,12 +29,13 @@
                     <path d="M12 16C12 16 14 18 16 18C18 18 20 16 20 16C20 19 18 21 16 21C14 21 12 19 12 16Z" fill="#B8D5A7" />
                 </svg>
             </a>
-            <div class="input-group w-50">
-                <input type="text" class="form-control" placeholder="Buscar eventos, consejos, anuncios..." />
-                <button class="btn btn-outline-secondary text-gray-600">
+            <form action="index.php?r=search" method="GET" class="input-group w-50">
+                <input type="hidden" name="r" value="search" />
+                <input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Buscar eventos, consejos, anuncios..." />
+                <button type="submit" id="searchButton" class="btn btn-outline-secondary text-gray-600">
                     <i class="fas fa-search"></i>
                 </button>
-            </div>
+            </form>
             <div class="d-flex align-items-center">
                 <button class="btn text-white position-relative me-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
@@ -116,8 +120,8 @@
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
 
-        <div class="carousel-date">
-            15 NOV
+        <div class="carousel-date text-md">
+            <?php echo date('d M', strtotime($events['date_start'])); ?>
         </div>
 
         <!-- Image Container -->
@@ -153,8 +157,7 @@
             </button>
         </div>
         <div class="mt-3">
-            <h3>Taller de Reciclaje Creativo</h3>
-            <p class="text-grey">Aprende a dar una segunda vida a materiales reciclables</p>
+            <h3><?= htmlspecialchars($events['event_title']); ?></h3>
         </div>
     </div>
 
@@ -171,7 +174,7 @@
                             <span class="fw-medium">Hora</span>
                         </div>
                         <div>
-                            <span>10:00 - 12:00</span>
+                            <span><?= htmlspecialchars($events['event_hour'] ?? 'No hay información'); ?></span>
                         </div>
                     </div>
                 </div>
@@ -186,7 +189,7 @@
                             <span class="fw-medium">Fecha</span>
                         </div>
                         <div>
-                            <span>15 de Noviembre</span>
+                            <span><?php echo date('d/m/Y', strtotime($events['date_start'])); ?></span>
                         </div>
                     </div>
                 </div>
@@ -216,7 +219,7 @@
                             <span class="fw-medium">Ubicación</span>
                         </div>
                         <div>
-                            <span>Centro Cívico</span>
+                            <span><?= htmlspecialchars($events['event_location']); ?></span>
                         </div>
                     </div>
                 </div>
@@ -229,29 +232,8 @@
             <div class="bg-custom-white rounded p-4 mb-4">
                 <h2>Descripción</h2>
                 <p>
-                    Únete a nuestro taller práctico donde aprenderás técnicas creativas para reutilizar
-                    materiales reciclables. Durante la sesión, exploraremos diferentes métodos para transformar objetos cotidianos en piezas útiles y decorativas.
+                    <?= htmlspecialchars($events['event_description']); ?>
                 </p>
-                <p>
-                    ¿Qué aprenderás?
-                </p>
-                <ul>
-                    <li>Técnicas básicas de reciclaje creativo</li>
-                    <li>Identificación de materiales reutilizables</li>
-                    <li>Herramientas necesarias para cada proyecto</li>
-                    <li>Tips para encontrar inspiración</li>
-                </ul>
-            </div>
-
-            <!-- Materiales necesarios -->
-            <div class="bg-custom-white rounded p-4 mb-4">
-                <h2>Materiales necesarios</h2>
-                <ul>
-                    <li>Tijeras</li>
-                    <li>Pegamento</li>
-                    <li>Materiales reciclados (botellas, cartón, etc.)</li>
-                    <li>Pinturas (opcional)</li>
-                </ul>
             </div>
 
             <!-- Organizador -->

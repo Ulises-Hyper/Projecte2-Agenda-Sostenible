@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="/src/css/style.css">
     <script src="/src/js/main.js"></script>
 </head>
@@ -31,7 +32,7 @@
                         <h1 class="text-custom-green-dark mb-4">Editar Perfil</h1>
                         <div class="d-flex justify-content-center mb-4">
                             <div class="profile-picture" id="profilePictureContainer">
-                                <img id="profilePicture" src="../../public/img/user-profile-default.png" alt="Foto de perfil" class="img-fluid">
+                                <img id="profilePicture" src="img/user-profile-default.png" alt="Foto de perfil" class="img-fluid">
                             </div>
                             <button class="edit-icon d-flex align-items-center justify-content-center" title="Cambiar foto" onclick="document.getElementById('profileImageInput').click();">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
@@ -39,7 +40,7 @@
                                     <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"></path>
                                 </svg>
                             </button> 
-                            <input type="file" id="profileImageInput" accept="image/*" name="profileImg" onchange="previewImage(event)" style="display: none;">
+                            <input type="file" id="profileImageInput" accept="image/*" name="profileImg" style="display: none;">
                         </div>
 
                         <form action="?r=doprofileupdate" id="profileEditForm" method="POST" enctype="multipart/form-data">

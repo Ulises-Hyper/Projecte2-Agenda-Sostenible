@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel de Administración</title>
+    <title>Agenda Sostenible Figuerenca</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/src/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="/src/css/style.css">
     <script src="/src/js/main.js"></script>
 </head>
 
-<body class="bg-custom-green-lightest">
+<body class="overflow-hidden">
 
     <!-- Barra superior con buscador -->
     <div class="bg-custom-green-darkest py-2">
@@ -81,6 +82,7 @@
         </div>
     </div>
 
+
     <!-- Navegación Principal -->
     <nav class="navbar-expand-md navbar-dark bg-custom-green-medium">
         <div class="container">
@@ -106,58 +108,61 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
-        <div class="card">
-            <div class="card-header d-flex pt-3">
-                <h3>Editar usuario</h3>
-            </div>
-            <div class="card-body">
-                <form method="POST" action="index.php?r=dashboardeditupdate">
-                    <input type="hidden" name="user_id" value="<?= htmlspecialchars($user['user_id']) ?>">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Usuario</label>
-                        <input type="text" class="form-control" name="username" id="username" required value="<?= htmlspecialchars($user['username']) ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="surname" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" name="surname" id="surname" required value="<?= htmlspecialchars($user['surname']) ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" name="name" id="name" required value="<?= htmlspecialchars($user['name']) ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" name="email" id="email" required value="<?= htmlspecialchars($user['email']) ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="imgProfile" class="form-label">Imágen de Perfil</label>
-                        <input type="file" class="form-control" name="imgProfile" id="imgProfile">
-                    </div>
-                    <div class="mb-3">
-                        <label for="role" class="form-label">Rol</label>
-                        <select class="form-select" name="role" id="role">
-                            <option value="user" <?= $user['role'] === 'user' ? 'selected' : '' ?>>Usuario</option>
-                            <option value="administrator" <?= $user['role'] === 'administrator' ? 'selected' : '' ?>>Administrador</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" name="Password" id="Password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="repeatPassword" class="form-label">Repetir Contraseña</label>
-                        <input type="password" class="form-control" name="repeatPassword" id="repeatPassword">
-                    </div>
-                    <button type="submit" class="btn btn-success">Guardar</button>
-                </form>
 
+    <!-- <div>
+        <?php foreach ($searchs as $search) { ?>
+            <div>
+                <span><?= $search['title'] ?></span>
+                <span><?= $search['brief_description'] ?></span>
+                <span><?= $search['explanatory_text'] ?></span>
+                <span><?= $search['hashtags'] ?></span>
+            </div>
+        <?php } ?>
+    </div> -->
+
+    <?php if (!empty($searchs)): ?>
+
+        <div class="container mt-4">
+            <?php foreach ($searchs as $search) { ?>
+
+                <div class="card shadow-sm h-100 mb-4">
+                    <div class="card-body d-flex flex-column">
+                        <!-- Título del Consejo -->
+                        <h5 class="card-title text-success"><?php echo htmlspecialchars($search['title']); ?></h5>
+
+                        <!-- Descripción Breve -->
+                        <p class="card-text text-muted"><?php echo htmlspecialchars($search['brief_description']); ?>.</p>
+
+                        <!-- Texto Explicativo -->
+                        <p class="card-text flex-grow-1">
+                            <?php echo nl2br(htmlspecialchars($search['explanatory_text'])); ?>
+                        </p>
+
+                        <!-- Hashtags -->
+                        <div class="mt-3">
+                            <?php
+                            // Dividir el campo de hashtags en un array usando la coma como separador
+                            $hashtags = explode(',', $search['hashtags']);
+
+                            // Recorrer cada hashtag y mostrarlo como una etiqueta
+                            foreach ($hashtags as $hashtag):
+                            ?>
+                                <span class="badge bg-primary"><?= htmlspecialchars(trim($hashtag)); ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    <?php else: ?>
+        <div class="container mt-4">
+            <div class="d-flex justify-content-center align-items-center" style="height: 70vh;">
+                <div class="text-center">
+                    <h1>No hay resultados para tu búsqueda</h1>
+                </div>
             </div>
         </div>
-    </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <?php endif; ?>
 </body>
 
 </html>

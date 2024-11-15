@@ -8,7 +8,6 @@ include "../src/config.php";
 include "../src/controllers/ctrlIndex.php";
 include "../src/controllers/ctrlJson.php";
 include '../src/controllers/ctrlDashboard.php';
-include '../src/controllers/ctrlEvento.php';
 include '../src/controllers/ctrlEventos.php';
 include '../src/controllers/ctrlFavoritos.php';
 include '../src/controllers/ctrlLogin.php';
@@ -26,11 +25,18 @@ include "../src/controllers/ctrlConsejos.php";
 include "../src/controllers/ctrlCrearEvento.php";
 include "../src/controllers/ctrlGuardarEvento.php";
 include "../src/controllers/ctrlEventList.php";
+include "../src/controllers/ctrlEventDelete.php";
+include "../src/controllers/ctrlEventUpdate.php";
+include "../src/controllers/ctrlEventView.php";
+include "../src/controllers/ctrlEventUpdateEdit.php";
 include "../src/controllers/ctrlCrearConsejo.php";
 include "../src/controllers/ctrlGuardarConsejo.php";
 include "../src/controllers/ctrlEliminarConsejo.php";
 include "../src/controllers/ctrlEditarConsejo.php";
 include "../src/controllers/ctrlGuardarEditarConsejo.php";
+include "../src/controllers/ctrlSearch.php";
+include "../src/controllers/ctrlEventoList.php";
+
 
 // Archivos Middleware
 
@@ -69,7 +75,11 @@ if (isset($_REQUEST["r"])) {
 
 if (!isset($r)) {
   $response = ctrlIndex($request, $response, $container);
-}elseif($r == "guardareditarconsejo"){
+} elseif ($r == "evento") {
+  $response = ctrlEventoList($request, $response, $container);
+}elseif($r == "search"){
+  $response = ctrlSearch($request, $response, $container);
+} elseif($r == "guardareditarconsejo"){
   $response = ctrlGuardarEditarConsejo($request, $response, $container);
 }elseif($r == "editarconsejo"){
   $response = ctrlEditarConsejo($request, $response, $container);
@@ -99,8 +109,6 @@ if (!isset($r)) {
   $response = isAdmin($request, $response, $container, "ctrlDashboardList");
 }elseif ($r == "dashboardview") {
   $response = isAdmin($request, $response, $container, "ctrlDashboard");
-} elseif ($r == "evento") {
-  $response = ctrlEvento($request, $response, $container);
 } elseif ($r == "login") {
   $response = ctrlLogin($request, $response, $container);
 } elseif ($r == "register") {
@@ -121,6 +129,12 @@ if (!isset($r)) {
   $response = ctrlEventList($request, $response, $container);
 } elseif ($r == "deleteevent") {
   ctrlEventDelete($tips);
+} elseif ($r == "eventupdate") {
+  $response = ctrlEventUpdate($request, $response, $container);
+} elseif ($r == "eventedit") {
+  $response = ctrlEventView($request, $response, $container);
+} elseif ($r == "eventupdateedit") {
+  $response = ctrlEventUpdateEdit($request, $response, $container);
 } elseif ($r == "json") {
   $response = ctrlJson($request, $response, $container);
 } else {
