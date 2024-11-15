@@ -3,3 +3,4 @@ bbdd
 estructura
 docker-compose.yml
 Build
+.dockerignore
