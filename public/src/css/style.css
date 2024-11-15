@@ -1,0 +1,246 @@
+:root {
+  --color-green-darkest: #0b5733;
+  --color-green-dark: #348c41;
+  --color-green-medium: #70b95c;
+  --color-green-light: #b8d5a7;
+  --color-green-lightest: #e6efe2; /* Green color palette for consistent styling */
+}
+
+.bg-custom-green-darkest {
+  background-color: var(--color-green-darkest); /* Applies the darkest green as the background color */
+}
+
+.bg-custom-green-darkest:hover {
+  background-color: #0b5733; /* Keeps the same color on hover for a static effect */
+}
+
+.bg-custom-green-dark {
+  background-color: var(--color-green-dark); /* Slightly lighter green for background */
+}
+
+.bg-custom-green-medium {
+  background-color: var(--color-green-medium); /* Medium green for additional color options */
+}
+
+.bg-custom-green-light {
+  background-color: var(--color-green-light); /* Lighter green for softer backgrounds */
+}
+
+.bg-custom-green-lightest {
+  background-color: var(--color-green-lightest); /* Lightest green for minimal accents */
+}
+
+.text-custom-green-darkest {
+  color: var(--color-green-darkest); /* Applies the darkest green to text */
+}
+
+.text-custom-green-dark {
+  color: var(--color-green-dark); /* Slightly lighter green for text */
+}
+
+.border-custom-green {
+  border-color: var(--color-green-dark); /* Dark green for borders */
+}
+
+.custom-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates two equal-width columns */
+  gap: 1.5rem; /* Spacing between grid items */
+}
+
+.custom-grid-item {
+  background-color: white; /* Default background color for grid items */
+  color: #333; /* Dark text for contrast */
+  padding: 16px; /* Adds internal spacing */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for a card-like effect */
+}
+
+.my-hover-link:hover {
+  background-color: var(--color-green-light); /* Light green background on hover */
+}
+
+.my-hover-link {
+  padding: 12px 16px; /* Adds padding for clickable areas */
+}
+
+.text-custom-white {
+  color: white; /* Ensures text is white for contrast */
+}
+
+.btn-custom-green {
+  background-color: #1b4332; /* Dark green button background */
+  color: white; /* White text for visibility */
+}
+
+.btn-custom-green-light {
+  background-color: #70b95d; /* Light green button variant */
+}
+
+.btn-custom-green:hover:not(.bg-custom-white) {
+  background-color: #143728; /* Darker shade for hover effect */
+  color: white; /* Keeps text white for consistency */
+}
+
+.date-box {
+  width: 80px; /* Fixed width for date containers */
+  height: 80px; /* Fixed height for square shape */
+}
+
+.category-icon {
+  width: 40px; /* Sets size for icons */
+  height: 40px; /* Ensures square dimensions */
+  border: 1px solid #1b4332; /* Dark green border for icons */
+}
+
+.filter-button {
+  position: fixed; /* Sticks the button to the viewport */
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  z-index: 1000; /* Ensures it appears above other elements */
+}
+
+.nav-pills .nav-link.active {
+  background-color: #1b4332; /* Dark green for active navigation tabs */
+  color: white; /* White text for contrast */
+}
+
+.nav-pills .nav-link {
+  color: #1b4332; /* Green text for unselected tabs */
+  background-color: #e8f3e4; /* Light green background */
+  transition: background-color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.nav-pills .nav-link:hover {
+  background-color: #1b4332; /* Dark green on hover */
+  color: white; /* Text changes to white for contrast */
+}
+
+.footer {
+  bottom: 0; /* Ensures footer sticks to the bottom */
+  width: 100%; /* Spans the full width */
+  padding: 1rem 0; /* Adds vertical spacing */
+}
+
+.bg-custom-white {
+  background-color: white !important; /* Overrides other background styles */
+}
+
+/* Styles for the carousel date container */
+.carousel-date {
+  position: absolute; /* Allows flexible positioning */
+  bottom: 60px; /* Positions the container above the bottom edge */
+  left: 165px; /* Aligns it horizontally */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  color: #333; /* Dark text for readability */
+  padding: 10px; /* Internal spacing */
+  width: 150px; /* Fixed width */
+  height: 150px; /* Fixed height */
+  border-radius: 8px; /* Rounded corners */
+  font-weight: bold; /* Makes text stand out */
+  z-index: 1; /* Ensures it appears above other elements */
+  display: flex; /* Flexbox for layout control */
+  flex-direction: column; /* Stacks content vertically */
+  text-align: center; /* Centers text horizontally */
+  justify-content: center; /* Centers content vertically */
+}
+
+.custom-margin {
+  margin: 63px; /* Adds consistent spacing */
+  width: 63px; /* Sets fixed width */
+}
+
+.btn-tag {
+  background-color: #bcd4ae7d; /* Soft green background */
+  width: 100px; /* Fixed width */
+  border-radius: 50px; /* Fully rounded corners */
+  box-shadow: 1px 1px 2px 2px rgba(138, 138, 138, 0.5); /* Subtle shadow for depth */
+}
+
+/* Styles for rating stars */
+.rating-stars {
+  display: flex; /* Aligns stars in a row */
+  cursor: pointer; /* Indicates interactivity */
+}
+
+.rating-stars i {
+  transition: color 0.2s; /* Smooth color change on hover */
+}
+
+.rating-stars .fas {
+  color: #ffc107; /* Yellow for filled stars */
+}
+
+.rating-stars .far {
+  color: #e4e5e9; /* Light gray for empty stars */
+}
+
+.rating-stars i:hover,
+.rating-stars i:hover ~ i {
+  color: #ffc107; /* Bright yellow on hover */
+}
+
+.rating-stars .selected {
+  color: #ffc107; /* Keeps yellow for selected stars */
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.profile-picture {
+  position: relative; /* Allows for absolute positioning within */
+  width: 100px; /* Fixed width for profile picture */
+  height: 100px; /* Fixed height */
+  border-radius: 50%; /* Circular shape */
+  overflow: hidden; /* Ensures image stays within bounds */
+  background-color: #f0f0f0; /* Placeholder background */
+}
+
+.profile-picture img {
+  width: 100%; /* Matches container width */
+  height: 100%; /* Matches container height */
+  object-fit: cover; /* Scales image to fill without distortion */
+}
+
+.edit-icon {
+  position: absolute; /* Positioned relative to the profile picture */
+  left: 54%; /* Horizontal position */
+  top: 25%; /* Vertical position */
+  background: rgb(111, 255, 0); /* Bright green background for visibility */
+  border-radius: 50%; /* Circular shape */
+  padding: 5px; /* Adds spacing around the icon */
+}
+
+input[type="file"] {
+  display: none; /* Hides the default file input */
+}
+
+.hover-white {
+  background: none; /* Removes background */
+  border: none; /* Removes border */
+  padding: 6px 12px; /* Adds clickable area */
+  color: white; /* White text for visibility */
+  border: 2px solid green; /* Green border for emphasis */
+  border-radius: 8px; /* Slightly rounded corners */
+}
+
+.hover-white a {
+  list-style: none; /* Removes bullet points */
+  text-decoration: none; /* Removes underline */
+  color: white; /* Ensures text remains white */
+}
+
+.hover-white:hover {
+  background-color: #348c41; /* Applies green on hover */
+  color: white; /* Keeps text white */
+  transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+a {
+  text-decoration: none; /* Removes underline from links */
+  color: inherit; /* Inherits text color */
+}
